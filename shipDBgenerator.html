@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>艦これ出撃当番表 艦娘DBジェネレータ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+</head>
+<body>
+<style>
+  body {
+    margin: 20px;
+    font-family: "arial unicode ms",sans-serif;
+  }
+  .toolbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .apptitle {
+    margin-right: 32px;
+  }
+  .debug_console {
+    width: 100%;
+    height: 200px;
+    border: 0px;
+    background: #aaaaaa;
+    overflow: auto;
+  }
+</style>
+
+<div id="toolbar" class="toolbar">
+  <div class="apptitle">艦これ出撃当番表 艦娘DBジェネレータ</div>
+  <input type="file" id="selfile" accept="application/json" />
+  <input type="button" id="savebtn" value="SAVE" onclick="onSaveButtonClicked();" />
+</div>
+<div id="debug_console" class="debug_console">
+</div>
+
+<script>
+  let shipDB = {};
+  let importShipDB = function(file) {
+    let reader = new FileReader();
+    reader.readAsText(file[0]);
+    reader.onload = function(ev){
+      const data = JSON.parse(reader.result);
+      Object.entries(data._mapMst).map(([, v]) => {
+        console.log(v._o.api_name);
+        const src = v._o;
+        let dst = {
+          id: src.api_id,
+          name: src.api_name,
+          yomi: src.api_yomi ? src.api_yomi : "",
+          stype: src.api_stype,
+        };
+        shipDB[dst.id] = dst;
+      });
+      document.getElementById('debug_console').innerText = reader.result;
+    }
+  }
+  let exportShipDB = function() {
+    const jsonStr = JSON.stringify(shipDB);
+    let blob = new Blob([jsonStr], {type:"text/plan"});
+    let link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'shipDB.json';
+    link.click();
+  }
+  document.getElementById('selfile').addEventListener('change',function(evt){
+    let file = evt.target.files;
+    importShipDB(file);
+    evt.target.value = '';
+  },false);
+  let onSaveButtonClicked = function(){
+    exportShipDB();
+  }
+
+</script>
+</body>
+</html>
