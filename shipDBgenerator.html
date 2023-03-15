@@ -37,15 +37,14 @@
 </div>
 
 <script>
-  let shipDB = {};
+  let shipDB = [];
   let importShipDB = function(file) {
     let reader = new FileReader();
     reader.readAsText(file[0]);
     reader.onload = function(ev){
       const data = JSON.parse(reader.result);
-      Object.entries(data._mapMst).map(([, v]) => {
-        console.log(v._o.api_name);
-        const src = v._o;
+      for (const src of data) {
+        console.log(src.api_name);
         let dst = {
           id: src.api_id,
           name: src.api_name,
@@ -53,7 +52,7 @@
           stype: src.api_stype,
         };
         shipDB[dst.id] = dst;
-      });
+      }
       document.getElementById('debug_console').innerText = reader.result;
     }
   }
