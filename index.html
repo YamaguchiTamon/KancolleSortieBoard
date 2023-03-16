@@ -153,8 +153,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
 <script src="shipDB.js"></script>
+<script src="defaultFleetData.js"></script>
 <script>
-  console.log(shipDB);
   let allowMultipleFleetTags = true;
 
   let fleetTags = [
@@ -222,293 +222,21 @@
     { name:'ゲージ4 攻略', fleetType:'U', fleetTag:9, oprationId:5, ships:[], visible:true },
   ];
 
-  let ships = [
-    { type:'BB', name:'金剛改二丙', fleetTags:{} },
-    { type:'BB', name:'比叡改二丙', fleetTags:{} },
-    { type:'BB', name:'榛名改二', fleetTags:{} },
-    { type:'BB', name:'霧島改二', fleetTags:{} },
-    { type:'BB', name:'長門改二', fleetTags:{} },
-    { type:'BB', name:'陸奥改二', fleetTags:{} },
-    { type:'BB', name:'大和改', fleetTags:{} },
-    { type:'BB', name:'大和改二重', fleetTags:{} },
-    { type:'BB', name:'武蔵改二', fleetTags:{} },
-    { type:'BB', name:'Bismark drei', fleetTags:{} },
-    { type:'BB', name:'Conti di Cavour nouvo', fleetTags:{} },
-    { type:'BB', name:'Italia', fleetTags:{} },
-    { type:'BB', name:'Roma改', fleetTags:{} },
-    { type:'BB', name:'Colorado改', fleetTags:{} },
-    { type:'BB', name:'Maryland改', fleetTags:{} },
-    { type:'BB', name:'Washington改', fleetTags:{} },
-    { type:'BB', name:'South Dakota改', fleetTags:{} },
-    { type:'BB', name:'Iowa改', fleetTags:{} },
-    { type:'BB', name:'Warspite改', fleetTags:{} },
-    { type:'BB', name:'Nelson改', fleetTags:{} },
-    { type:'BB', name:'Richelieu改', fleetTags:{} },
-    { type:'BB', name:'Гангут два', fleetTags:{} },
-    { type:'BBV', name:'扶桑改二', fleetTags:{} },
-    { type:'BBV', name:'山城改二', fleetTags:{} },
-    { type:'BBV', name:'伊勢改二', fleetTags:{} },
-    { type:'BBV', name:'日向改二', fleetTags:{} },
-    { type:'CV', name:'赤城改二', fleetTags:{} },
-    { type:'CV', name:'加賀改二', fleetTags:{} },
-    { type:'CV', name:'蒼龍改二', fleetTags:{} },
-    { type:'CV', name:'飛龍改二', fleetTags:{} },
-    { type:'CV', name:'翔鶴改二甲', fleetTags:{} },
-    { type:'CV', name:'瑞鶴改二甲', fleetTags:{} },
-    { type:'CV', name:'雲龍改', fleetTags:{} },
-    { type:'CV', name:'天城改', fleetTags:{} },
-    { type:'CV', name:'葛城改', fleetTags:{} },
-    { type:'CV', name:'大鳳改', fleetTags:{} },
-    { type:'CV', name:'Graf Zeppelin改', fleetTags:{} },
-    { type:'CV', name:'Aquila改', fleetTags:{} },
-    { type:'CV', name:'Saratoga Mk.II Mod.2', fleetTags:{} },
-    { type:'CV', name:'Hornet改', fleetTags:{} },
-    { type:'CV', name:'Intrepid改', fleetTags:{} },
-    { type:'CV', name:'Ark Royal改', fleetTags:{} },
-    { type:'CV', name:'Victorious改', fleetTags:{} },
-    { type:'CVL', name:'鳳翔改', fleetTags:{} },
-    { type:'CVL', name:'龍驤改二', fleetTags:{} },
-    { type:'CVL', name:'龍鳳改二', fleetTags:{} },
-    { type:'CVL', name:'祥鳳改', fleetTags:{} },
-    { type:'CVL', name:'瑞鳳改二乙', fleetTags:{} },
-    { type:'CVL', name:'飛鷹改', fleetTags:{} },
-    { type:'CVL', name:'隼鷹改二', fleetTags:{} },
-    { type:'CVL', name:'千歳航改二', fleetTags:{} },
-    { type:'CVL', name:'千代田航改二', fleetTags:{} },
-    { type:'CVL', name:'大鷹改二', fleetTags:{} },
-    { type:'CVL', name:'雲鷹改二', fleetTags:{} },
-    { type:'CVL', name:'神鷹改二', fleetTags:{} },
-    { type:'CVL', name:'Gambier Bay Mk.II', fleetTags:{} },
-    { type:'CA', name:'古鷹改二', fleetTags:{} },
-    { type:'CA', name:'加古改二', fleetTags:{} },
-    { type:'CA', name:'青葉改', fleetTags:{} },
-    { type:'CA', name:'衣笠改二', fleetTags:{} },
-    { type:'CA', name:'妙高改二', fleetTags:{} },
-    { type:'CA', name:'那智改二', fleetTags:{} },
-    { type:'CA', name:'足柄改二', fleetTags:{} },
-    { type:'CA', name:'羽黒改二', fleetTags:{} },
-    { type:'CA', name:'高雄改', fleetTags:{} },
-    { type:'CA', name:'愛宕改', fleetTags:{} },
-    { type:'CA', name:'摩耶改二', fleetTags:{} },
-    { type:'CA', name:'鳥海改二', fleetTags:{} },
-    { type:'CA', name:'Prinz Eugen改', fleetTags:{} },
-    { type:'CA', name:'Zara due', fleetTags:{} },
-    { type:'CA', name:'Pola改', fleetTags:{} },
-    { type:'CA', name:'Northampton改', fleetTags:{} },
-    { type:'CA', name:'Houston改', fleetTags:{} },
-    { type:'CAV', name:'最上改二特', fleetTags:{} },
-    { type:'CAV', name:'三隈改', fleetTags:{} },
-    { type:'CAV', name:'鈴谷改二', fleetTags:{} },
-    { type:'CAV', name:'熊野改二', fleetTags:{} },
-    { type:'CAV', name:'利根改二', fleetTags:{} },
-    { type:'CAV', name:'筑摩改二', fleetTags:{} },
-    { type:'CL', name:'天龍改二', fleetTags:{} },
-    { type:'CL', name:'龍田改二', fleetTags:{} },
-    { type:'CL', name:'球磨改二丁', fleetTags:{} },
-    { type:'CL', name:'多摩改二', fleetTags:{} },
-    { type:'CL', name:'長良改', fleetTags:{} },
-    { type:'CL', name:'五十鈴改二', fleetTags:{} },
-    { type:'CL', name:'名取改', fleetTags:{} },
-    { type:'CL', name:'由良改二', fleetTags:{} },
-    { type:'CL', name:'鬼怒改二', fleetTags:{} },
-    { type:'CL', name:'阿武隈改二', fleetTags:{} },
-    { type:'CL', name:'川内改二', fleetTags:{} },
-    { type:'CL', name:'神通改二', fleetTags:{} },
-    { type:'CL', name:'那珂改二', fleetTags:{} },
-    { type:'CL', name:'夕張改二特', fleetTags:{} },
-    { type:'CL', name:'阿賀野改', fleetTags:{} },
-    { type:'CL', name:'能代改二', fleetTags:{} },
-    { type:'CL', name:'矢矧改二乙', fleetTags:{} },
-    { type:'CL', name:'酒匂改', fleetTags:{} },
-    { type:'CL', name:'大淀改', fleetTags:{} },
-    { type:'CL', name:'L.d.S.D.Abruzzi改', fleetTags:{} },
-    { type:'CL', name:'G.Garibaldi改', fleetTags:{} },
-    { type:'CL', name:'Honolulu改', fleetTags:{} },
-    { type:'CL', name:'Helena改', fleetTags:{} },
-    { type:'CL', name:'Atlanta改', fleetTags:{} },
-    { type:'CL', name:'Sheffield改', fleetTags:{} },
-    { type:'CL', name:'Gotland andra', fleetTags:{} },
-    { type:'CL', name:'De Ruyter改', fleetTags:{} },
-    { type:'CL', name:'Perth改', fleetTags:{} },
-    { type:'CLT', name:'北上改二', fleetTags:{} },
-    { type:'CLT', name:'北上改二-2', fleetTags:{} },
-    { type:'CLT', name:'大井改二', fleetTags:{} },
-    { type:'CLT', name:'大井改二-2', fleetTags:{} },
-    { type:'CLT', name:'木曾改二', fleetTags:{} },
-    { type:'CLD', name:'香取改', fleetTags:{} },
-    { type:'CLD', name:'鹿島改', fleetTags:{} },
-    { type:'DD', name:'神風改', fleetTags:{} },
-    { type:'DD', name:'朝風改', fleetTags:{} },
-    { type:'DD', name:'春風改', fleetTags:{} },
-    { type:'DD', name:'松風改', fleetTags:{} },
-    { type:'DD', name:'旗風改', fleetTags:{} },
-    { type:'DD', name:'睦月改二', fleetTags:{} },
-    { type:'DD', name:'如月改二', fleetTags:{} },
-    { type:'DD', name:'弥生改', fleetTags:{} },
-    { type:'DD', name:'卯月改', fleetTags:{} },
-    { type:'DD', name:'皐月改二', fleetTags:{} },
-    { type:'DD', name:'水無月改', fleetTags:{} },
-    { type:'DD', name:'文月改二', fleetTags:{} },
-    { type:'DD', name:'長月改', fleetTags:{} },
-    { type:'DD', name:'菊月改', fleetTags:{} },
-    { type:'DD', name:'三日月改', fleetTags:{} },
-    { type:'DD', name:'吹雪改二', fleetTags:{} },
-    { type:'DD', name:'白雪改', fleetTags:{} },
-    { type:'DD', name:'初雪改', fleetTags:{} },
-    { type:'DD', name:'深雪改', fleetTags:{} },
-    { type:'DD', name:'叢雲改二', fleetTags:{} },
-    { type:'DD', name:'薄雲改', fleetTags:{} },
-    { type:'DD', name:'磯波改二', fleetTags:{} },
-    { type:'DD', name:'浦波改二', fleetTags:{} },
-    { type:'DD', name:'綾波改二', fleetTags:{} },
-    { type:'DD', name:'敷波改二', fleetTags:{} },
-    { type:'DD', name:'天霧改二丁', fleetTags:{} },
-    { type:'DD', name:'狭霧改', fleetTags:{} },
-    { type:'DD', name:'朧改', fleetTags:{} },
-    { type:'DD', name:'曙改二', fleetTags:{} },
-    { type:'DD', name:'漣改', fleetTags:{} },
-    { type:'DD', name:'潮改二', fleetTags:{} },
-    { type:'DD', name:'暁改二', fleetTags:{} },
-    { type:'DD', name:'Верный', fleetTags:{} },
-    { type:'DD', name:'雷改', fleetTags:{} },
-    { type:'DD', name:'電改', fleetTags:{} },
-    { type:'DD', name:'初春改二', fleetTags:{} },
-    { type:'DD', name:'子日改', fleetTags:{} },
-    { type:'DD', name:'若葉改', fleetTags:{} },
-    { type:'DD', name:'初霜改二', fleetTags:{} },
-    { type:'DD', name:'有明改', fleetTags:{} },
-    { type:'DD', name:'白露改二', fleetTags:{} },
-    { type:'DD', name:'時雨改二', fleetTags:{} },
-    { type:'DD', name:'村雨改二', fleetTags:{} },
-    { type:'DD', name:'夕立改二', fleetTags:{} },
-    { type:'DD', name:'春雨改', fleetTags:{} },
-    { type:'DD', name:'五月雨改', fleetTags:{} },
-    { type:'DD', name:'海風改二', fleetTags:{} },
-    { type:'DD', name:'山風改二丁', fleetTags:{} },
-    { type:'DD', name:'江風改二', fleetTags:{} },
-    { type:'DD', name:'涼風改', fleetTags:{} },
-    { type:'DD', name:'朝潮改二丁', fleetTags:{} },
-    { type:'DD', name:'大潮改二', fleetTags:{} },
-    { type:'DD', name:'満潮改二', fleetTags:{} },
-    { type:'DD', name:'荒潮改二', fleetTags:{} },
-    { type:'DD', name:'朝雲改', fleetTags:{} },
-    { type:'DD', name:'山雲改', fleetTags:{} },
-    { type:'DD', name:'峯雲改', fleetTags:{} },
-    { type:'DD', name:'霰改二(アラレ)', fleetTags:{} },
-    { type:'DD', name:'霞改二(カスミ)', fleetTags:{} },
-    { type:'DD', name:'陽炎改二', fleetTags:{} },
-    { type:'DD', name:'不知火改二', fleetTags:{} },
-    { type:'DD', name:'黒潮改二', fleetTags:{} },
-    { type:'DD', name:'親潮改二', fleetTags:{} },
-    { type:'DD', name:'早潮改二', fleetTags:{} },
-    { type:'DD', name:'初風改', fleetTags:{} },
-    { type:'DD', name:'雪風改二', fleetTags:{} },
-    { type:'DD', name:'天津風改', fleetTags:{} },
-    { type:'DD', name:'時津風改', fleetTags:{} },
-    { type:'DD', name:'浦風丁改', fleetTags:{} },
-    { type:'DD', name:'磯風乙改', fleetTags:{} },
-    { type:'DD', name:'浜風乙改', fleetTags:{} },
-    { type:'DD', name:'谷風丁改', fleetTags:{} },
-    { type:'DD', name:'野分改', fleetTags:{} },
-    { type:'DD', name:'嵐改', fleetTags:{} },
-    { type:'DD', name:'荻風改', fleetTags:{} },
-    { type:'DD', name:'舞風改', fleetTags:{} },
-    { type:'DD', name:'秋雲改二', fleetTags:{} },
-    { type:'DD', name:'夕雲改二', fleetTags:{} },
-    { type:'DD', name:'巻雲改二', fleetTags:{} },
-    { type:'DD', name:'風雲改二', fleetTags:{} },
-    { type:'DD', name:'長波改二', fleetTags:{} },
-    { type:'DD', name:'巻波改', fleetTags:{} },
-    { type:'DD', name:'高波改二', fleetTags:{} },
-    { type:'DD', name:'玉波改', fleetTags:{} },
-    { type:'DD', name:'涼波改', fleetTags:{} },
-    { type:'DD', name:'藤波改', fleetTags:{} },
-    { type:'DD', name:'早波改', fleetTags:{} },
-    { type:'DD', name:'浜波改', fleetTags:{} },
-    { type:'DD', name:'沖波改二', fleetTags:{} },
-    { type:'DD', name:'岸波改', fleetTags:{} },
-    { type:'DD', name:'朝霜改二', fleetTags:{} },
-    { type:'DD', name:'早霜改', fleetTags:{} },
-    { type:'DD', name:'秋霜改', fleetTags:{} },
-    { type:'DD', name:'清霜改', fleetTags:{} },
-    { type:'DD', name:'秋月改', fleetTags:{} },
-    { type:'DD', name:'照月改', fleetTags:{} },
-    { type:'DD', name:'涼月改', fleetTags:{} },
-    { type:'DD', name:'初月改', fleetTags:{} },
-    { type:'DD', name:'冬月改', fleetTags:{} },
-    { type:'DD', name:'島風改', fleetTags:{} },
-    { type:'DD', name:'松改', fleetTags:{} },
-    { type:'DD', name:'竹改', fleetTags:{} },
-    { type:'DD', name:'梅改', fleetTags:{} },
-    { type:'DD', name:'桃改', fleetTags:{} },
-    { type:'DD', name:'Z1 zwei', fleetTags:{} },
-    { type:'DD', name:'Z3 zwei', fleetTags:{} },
-    { type:'DD', name:'Maestrale改', fleetTags:{} },
-    { type:'DD', name:'Grecale改', fleetTags:{} },
-    { type:'DD', name:'Libeccio改', fleetTags:{} },
-    { type:'DD', name:'Scirocco改', fleetTags:{} },
-    { type:'DD', name:'Fletcher Mk.II', fleetTags:{} },
-    { type:'DD', name:'Johnston改', fleetTags:{} },
-    { type:'DD', name:'Samuel B.Roberts Mk.II', fleetTags:{} },
-    { type:'DD', name:'Jervis改', fleetTags:{} },
-    { type:'DD', name:'Janus改', fleetTags:{} },
-    { type:'DD', name:'Ташкент改', fleetTags:{} },
-    { type:'DE', name:'占守改', fleetTags:{} },
-    { type:'DE', name:'国後改', fleetTags:{} },
-    { type:'DE', name:'八丈改', fleetTags:{} },
-    { type:'DE', name:'石垣改', fleetTags:{} },
-    { type:'DE', name:'択捉改', fleetTags:{} },
-    { type:'DE', name:'松輪改', fleetTags:{} },
-    { type:'DE', name:'佐渡改', fleetTags:{} },
-    { type:'DE', name:'対馬改', fleetTags:{} },
-    { type:'DE', name:'平戸改', fleetTags:{} },
-    { type:'DE', name:'福江改', fleetTags:{} },
-    { type:'DE', name:'御蔵改', fleetTags:{} },
-    { type:'DE', name:'倉橋改', fleetTags:{} },
-    { type:'DE', name:'屋代改', fleetTags:{} },
-    { type:'DE', name:'日振改', fleetTags:{} },
-    { type:'DE', name:'大東改', fleetTags:{} },
-    { type:'DE', name:'昭南改', fleetTags:{} },
-    { type:'DE', name:'第四号海防艦改', fleetTags:{} },
-    { type:'DE', name:'第三〇号海防艦改', fleetTags:{} },
-    { type:'SSV', name:'伊13改', fleetTags:{} },
-    { type:'SSV', name:'伊14改', fleetTags:{} },
-    { type:'SSV', name:'伊400改', fleetTags:{} },
-    { type:'SSV', name:'伊401改', fleetTags:{} },
-    { type:'SSV', name:'伊8改', fleetTags:{} },
-    { type:'SSV', name:'伊19改', fleetTags:{} },
-    { type:'SSV', name:'伊26改', fleetTags:{} },
-    { type:'SSV', name:'伊58改', fleetTags:{} },
-    { type:'SS', name:'伊168改', fleetTags:{} },
-    { type:'SS', name:'伊47改', fleetTags:{} },
-    { type:'SS', name:'伊201改', fleetTags:{} },
-    { type:'SS', name:'伊203改', fleetTags:{} },
-    { type:'SS', name:'U-511改', fleetTags:{} },
-    { type:'SS', name:'呂500', fleetTags:{} },
-    { type:'SS', name:'まるゆ改', fleetTags:{} },
-    { type:'SS', name:'Luigi Torelli改', fleetTags:{} },
-    { type:'SS', name:'Scamp改', fleetTags:{} },
-    { type:'AV', name:'瑞穂改', fleetTags:{} },
-    { type:'AV', name:'日進改', fleetTags:{} },
-    { type:'AV', name:'日進改-2', fleetTags:{} },
-    { type:'AV', name:'秋津洲改', fleetTags:{} },
-    { type:'AV', name:'Commandant Teste改', fleetTags:{} },
-    { type:'AS', name:'迅鯨改', fleetTags:{} },
-    { type:'AS', name:'長鯨改', fleetTags:{} },
-    { type:'AS', name:'大鯨', fleetTags:{} },
-    { type:'LHA', name:'神州丸改', fleetTags:{} },
-    { type:'LHA', name:'あきつ改', fleetTags:{} },
-    { type:'AO', name:'神威改母', fleetTags:{} },
-    { type:'AO', name:'速吸改', fleetTags:{} },
-    { type:'AR', name:'明石改', fleetTags:{} },
-    { type:'AR', name:'明石改-2', fleetTags:{} },
-    { type:'AR', name:'明石改-3', fleetTags:{} },
-    { type:'AR', name:'明石改-4', fleetTags:{} },
-    { type:'US', name:'特務艦 宗谷', fleetTags:{} },
-    { type:'US', name:'南極観測船 宗谷', fleetTags:{} },
-    { type:'US', name:'山汐丸改', fleetTags:{} },
-    { type:'US', name:'[未所持艦]', fleetTags:{} },
-  ];
+  let ships = [];
+  {
+    const dataLen = defaultFleetData.length;
+    for(let i = 0; i < dataLen; ++i) {
+      const shipData = defaultFleetData[i];
+      const typeData = shipDB[shipData.id];
+      const ship = {
+        type: typeData.stype,
+        name: typeData.name,
+        fleetTags:{}
+      };
+      ships.push(ship);
+    }
+    ships.push({ type:'US', name:'[未所持艦]', fleetTags:{} });
+  }
 
   let operations = [
     { name:'第一海域:インド洋/アラビア海' },
@@ -523,27 +251,31 @@
   //let ships = [];
   //let operations = [];
   //let fleets = [];
-  const shipColors = {
-    BB :'#440000', // 戦艦
-    BBV:'#442200', // 航空戦艦
-    CV :'#333300', // 空母
-    CVL:'#444411', // 軽空母
-    CA :'#002200', // 重巡洋艦
-    CAV:'#223300', // 航空巡洋艦
-    CL :'#002244', // 軽巡洋艦
-    CLT:'#003344', // 重雷装巡洋艦
-    CLD:'#223333', // 練習巡洋艦
-    DD :'#000044', // 駆逐艦
-    DE :'#222244', // 海防艦
-    SSV:'#220044', // 潜水空母
-    SS :'#111133', // 潜水艦
-    AV :'#444444', // 水上機母艦
-    AS :'#222222', // 潜水母艦
-    LHA:'#333333', // 揚陸艦
-    AO :'#333333', // 補給艦
-    AR :'#333333', // 工作艦
-    US :'#333333', // その他
-  };
+  const shipColors = [
+    '#333333', // ?
+    '#222244', // 海防艦
+    '#000044', // 駆逐艦
+    '#002244', // 軽巡洋艦
+    '#003344', // 重雷装巡洋艦
+    '#002200', // 重巡洋艦
+    '#223300', // 航空巡洋艦
+    '#444411', // 軽空母
+    '#550000', // 高速戦艦
+    '#440000', // 戦艦
+    '#442200', // 航空戦艦
+    '#333300', // 空母
+    '#333333', // ?
+    '#111133', // 潜水艦
+    '#220044', // 潜水空母
+    '#333333', // 輸送艦
+    '#444444', // 水上機母艦
+    '#333333', // 揚陸艦
+    '#222200', // 装甲空母
+    '#333333', // 工作艦
+    '#222222', // 潜水母艦
+    '#223333', // 練習巡洋艦
+    '#333333', // 補給艦
+];
 
   let loadFromJsonFile = function(file) {
     let reader = new FileReader();
