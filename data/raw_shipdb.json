@@ -44818,6 +44818,71 @@
     "api_voicef": 3
   },
   {
+    "api_id": 727,
+    "api_sortno": 1727,
+    "api_sort_id": 26022,
+    "api_name": "第百一号輸送艦改",
+    "api_yomi": "だいひゃくいちごう",
+    "api_stype": 17,
+    "api_ctype": 120,
+    "api_afterlv": 0,
+    "api_aftershipid": "0",
+    "api_taik": [
+      40,
+      59
+    ],
+    "api_souk": [
+      14,
+      46
+    ],
+    "api_houg": [
+      12,
+      37
+    ],
+    "api_raig": [
+      0,
+      0
+    ],
+    "api_tyku": [
+      17,
+      41
+    ],
+    "api_luck": [
+      22,
+      72
+    ],
+    "api_soku": 5,
+    "api_leng": 1,
+    "api_slot_num": 3,
+    "api_maxeq": [
+      8,
+      8,
+      2,
+      0,
+      0
+    ],
+    "api_buildtime": 150,
+    "api_broken": [
+      2,
+      2,
+      13,
+      5
+    ],
+    "api_powup": [
+      1,
+      0,
+      1,
+      1
+    ],
+    "api_backs": 6,
+    "api_getmes": "<br>",
+    "api_afterfuel": 0,
+    "api_afterbull": 0,
+    "api_fuel_max": 45,
+    "api_bull_max": 25,
+    "api_voicef": 1
+  },
+  {
     "api_id": 877,
     "api_sortno": 477,
     "api_sort_id": 31011,
@@ -46071,6 +46136,71 @@
     "api_voicef": 3
   },
   {
+    "api_id": 904,
+    "api_sortno": 504,
+    "api_sort_id": 21041,
+    "api_name": "能美",
+    "api_yomi": "のうみ",
+    "api_stype": 1,
+    "api_ctype": 94,
+    "api_afterlv": 45,
+    "api_aftershipid": "909",
+    "api_taik": [
+      9,
+      18
+    ],
+    "api_souk": [
+      4,
+      16
+    ],
+    "api_houg": [
+      4,
+      16
+    ],
+    "api_raig": [
+      0,
+      0
+    ],
+    "api_tyku": [
+      9,
+      36
+    ],
+    "api_luck": [
+      13,
+      67
+    ],
+    "api_soku": 5,
+    "api_leng": 1,
+    "api_slot_num": 2,
+    "api_maxeq": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "api_buildtime": 14,
+    "api_broken": [
+      1,
+      1,
+      2,
+      0
+    ],
+    "api_powup": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "api_backs": 4,
+    "api_getmes": "提督、よろしくお願い致します。海防艦、能美です。<br>御蔵型の四番艦です。マル急計画で整備されました。<br>この海……共にまいりましょう。",
+    "api_afterfuel": 90,
+    "api_afterbull": 125,
+    "api_fuel_max": 10,
+    "api_bull_max": 10,
+    "api_voicef": 1
+  },
+  {
     "api_id": 905,
     "api_sortno": 505,
     "api_sort_id": 21051,
@@ -46199,6 +46329,71 @@
     "api_fuel_max": 15,
     "api_bull_max": 20,
     "api_voicef": 3
+  },
+  {
+    "api_id": 909,
+    "api_sortno": 509,
+    "api_sort_id": 21042,
+    "api_name": "能美改",
+    "api_yomi": "のうみ",
+    "api_stype": 1,
+    "api_ctype": 94,
+    "api_afterlv": 0,
+    "api_aftershipid": "0",
+    "api_taik": [
+      17,
+      28
+    ],
+    "api_souk": [
+      7,
+      33
+    ],
+    "api_houg": [
+      5,
+      35
+    ],
+    "api_raig": [
+      0,
+      0
+    ],
+    "api_tyku": [
+      16,
+      61
+    ],
+    "api_luck": [
+      16,
+      76
+    ],
+    "api_soku": 5,
+    "api_leng": 1,
+    "api_slot_num": 3,
+    "api_maxeq": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "api_buildtime": 14,
+    "api_broken": [
+      1,
+      1,
+      2,
+      0
+    ],
+    "api_powup": [
+      1,
+      0,
+      1,
+      0
+    ],
+    "api_backs": 5,
+    "api_getmes": "<br>",
+    "api_afterfuel": 0,
+    "api_afterbull": 0,
+    "api_fuel_max": 10,
+    "api_bull_max": 10,
+    "api_voicef": 1
   },
   {
     "api_id": 910,
@@ -46721,6 +46916,71 @@
     "api_voicef": 1
   },
   {
+    "api_id": 923,
+    "api_sortno": 523,
+    "api_sort_id": 32361,
+    "api_name": "Tuscaloosa",
+    "api_yomi": "タスカルーサ",
+    "api_stype": 5,
+    "api_ctype": 121,
+    "api_afterlv": 50,
+    "api_aftershipid": "928",
+    "api_taik": [
+      43,
+      55
+    ],
+    "api_souk": [
+      34,
+      49
+    ],
+    "api_houg": [
+      36,
+      52
+    ],
+    "api_raig": [
+      0,
+      45
+    ],
+    "api_tyku": [
+      18,
+      60
+    ],
+    "api_luck": [
+      17,
+      77
+    ],
+    "api_soku": 10,
+    "api_leng": 2,
+    "api_slot_num": 3,
+    "api_maxeq": [
+      1,
+      1,
+      5,
+      0,
+      0
+    ],
+    "api_buildtime": 85,
+    "api_broken": [
+      2,
+      2,
+      10,
+      2
+    ],
+    "api_powup": [
+      2,
+      1,
+      0,
+      2
+    ],
+    "api_backs": 5,
+    "api_getmes": "Hi！ Good to see you.　あたしが、そうさ。<br>重巡Tuscaloosa！ン、New Orleans classだ。<br>よろしく！",
+    "api_afterfuel": 500,
+    "api_afterbull": 460,
+    "api_fuel_max": 40,
+    "api_bull_max": 60,
+    "api_voicef": 1
+  },
+  {
     "api_id": 925,
     "api_sortno": 525,
     "api_sort_id": 32231,
@@ -46852,6 +47112,71 @@
     "api_fuel_max": 10,
     "api_bull_max": 10,
     "api_voicef": 1
+  },
+  {
+    "api_id": 928,
+    "api_sortno": 528,
+    "api_sort_id": 32362,
+    "api_name": "Tuscaloosa改",
+    "api_yomi": "タスカルーサ",
+    "api_stype": 5,
+    "api_ctype": 121,
+    "api_afterlv": 0,
+    "api_aftershipid": "0",
+    "api_taik": [
+      53,
+      65
+    ],
+    "api_souk": [
+      41,
+      75
+    ],
+    "api_houg": [
+      45,
+      77
+    ],
+    "api_raig": [
+      0,
+      62
+    ],
+    "api_tyku": [
+      32,
+      79
+    ],
+    "api_luck": [
+      20,
+      90
+    ],
+    "api_soku": 10,
+    "api_leng": 2,
+    "api_slot_num": 4,
+    "api_maxeq": [
+      1,
+      1,
+      2,
+      5,
+      0
+    ],
+    "api_buildtime": 85,
+    "api_broken": [
+      2,
+      6,
+      18,
+      3
+    ],
+    "api_powup": [
+      2,
+      1,
+      1,
+      2
+    ],
+    "api_backs": 6,
+    "api_getmes": "<br>",
+    "api_afterfuel": 0,
+    "api_afterbull": 0,
+    "api_fuel_max": 40,
+    "api_bull_max": 65,
+    "api_voicef": 3
   },
   {
     "api_id": 930,
@@ -47305,6 +47630,71 @@
     ],
     "api_backs": 5,
     "api_getmes": "日本陸軍特種船、揚陸母艦、熊野丸だ。<br>貴様が提督か。成程……そうか。貴官の指揮下に入ろう。<br>よろしいか！",
+    "api_afterfuel": 180,
+    "api_afterbull": 370,
+    "api_fuel_max": 40,
+    "api_bull_max": 15,
+    "api_voicef": 1
+  },
+  {
+    "api_id": 945,
+    "api_sortno": 545,
+    "api_sort_id": 26021,
+    "api_name": "第百一号輸送艦",
+    "api_yomi": "だいひゃくいちごう",
+    "api_stype": 17,
+    "api_ctype": 120,
+    "api_afterlv": 50,
+    "api_aftershipid": "727",
+    "api_taik": [
+      38,
+      49
+    ],
+    "api_souk": [
+      11,
+      34
+    ],
+    "api_houg": [
+      4,
+      24
+    ],
+    "api_raig": [
+      0,
+      0
+    ],
+    "api_tyku": [
+      15,
+      32
+    ],
+    "api_luck": [
+      17,
+      57
+    ],
+    "api_soku": 5,
+    "api_leng": 1,
+    "api_slot_num": 2,
+    "api_maxeq": [
+      8,
+      2,
+      0,
+      0,
+      0
+    ],
+    "api_buildtime": 150,
+    "api_broken": [
+      2,
+      2,
+      12,
+      2
+    ],
+    "api_powup": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "api_backs": 5,
+    "api_getmes": "第百一号型輸送艦、えっと、そうだ、二等輸送艦の方が<br>わかりやすいですよね！一番艦、第百一号輸送艦です！<br>戦時急造ですが、私、結構よくできてますよ！　はい！",
     "api_afterfuel": 180,
     "api_afterbull": 370,
     "api_fuel_max": 40,
@@ -53879,6 +54269,126 @@
     "api_stype": 7,
     "api_ctype": 1,
     "api_soku": 5,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2152,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2153,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2154,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2155,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫-壊",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2156,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫-壊",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2157,
+    "api_sort_id": 0,
+    "api_name": "深海重巡水姫-壊",
+    "api_yomi": "",
+    "api_stype": 6,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2158,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2159,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2160,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2161,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫-壊",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2162,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫-壊",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
+    "api_slot_num": 5
+  },
+  {
+    "api_id": 2163,
+    "api_sort_id": 0,
+    "api_name": "深海擱座揚陸姫-壊",
+    "api_yomi": "",
+    "api_stype": 10,
+    "api_ctype": 1,
+    "api_soku": 10,
     "api_slot_num": 5
   }
 ]

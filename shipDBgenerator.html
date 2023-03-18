@@ -57,11 +57,11 @@
     }
   }
   let exportShipDB = function() {
-    const jsonStr = JSON.stringify(shipDB);
+    const jsonStr = 'const shipDB = ' + JSON.stringify(shipDB) + ';';
     let blob = new Blob([jsonStr], {type:"text/plan"});
     let link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'shipDB.json';
+    link.download = 'shipDB.js';
     link.click();
   }
   document.getElementById('selfile').addEventListener('change',function(evt){

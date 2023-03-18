@@ -1,2 +1,2 @@
-myfleetdata20230306.json 制空権シミュレータ形式所持艦データ
-raw_shipdb20230306.json 未加工全艦船DB
+myfleetdata.json 制空権シミュレータ形式所持艦データ
+raw_shipdb.json 未加工全艦船DB
