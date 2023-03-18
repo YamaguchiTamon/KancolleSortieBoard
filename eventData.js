@@ -1,4 +1,4 @@
-const eventId = '202308';
+const eventId = '202208';
 
 const fleetTags = [
     { name:'前路掃討部隊', color:'#808080' },       // 0
@@ -11,6 +11,15 @@ const fleetTags = [
     { name:'東方任務部隊', color:'#ffff00' },       // 7
     { name:'西方先遣部隊', color:'#ff99cc' },       // 8
     { name:'西方任務決戦部隊', color:'#800080' },    // 9
+];
+
+const operations = [
+    { name:'第一海域:インド洋/アラビア海' },
+    { name:'第二海域:アラビア海/アデン湾/紅海' },
+    { name:'第三海域:スエズ湾/地中海' },
+    { name:'第四海域:大西洋/ジブラルタル沖' },
+    { name:'第五海域:ジブラルタル沖/北アフリカ沖' },
+    { name:'第六海域:カサブランカ沖' },
 ];
 
 let fleets = [
@@ -63,13 +72,4 @@ let fleets = [
     { name:'破砕 Y', fleetType:'U', fleetTag:9, oprationId:5, ships:[], visible:false },
     { name:'破砕 U', fleetType:'U', fleetTag:5, oprationId:5, ships:[], visible:false },
     { name:'ゲージ4 攻略', fleetType:'U', fleetTag:9, oprationId:5, ships:[], visible:true },
-];
-
-let operations = [
-    { name:'第一海域:インド洋/アラビア海' },
-    { name:'第二海域:アラビア海/アデン湾/紅海' },
-    { name:'第三海域:スエズ湾/地中海' },
-    { name:'第四海域:大西洋/ジブラルタル沖' },
-    { name:'第五海域:ジブラルタル沖/北アフリカ沖' },
-    { name:'第六海域:カサブランカ沖' },
 ];

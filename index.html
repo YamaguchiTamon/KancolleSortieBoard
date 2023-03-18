@@ -205,19 +205,19 @@
     reader.readAsText(file[0]);
     reader.onload = function(ev){
       const data = JSON.parse(reader.result);
-      if(data.hasOwnProperty('fleetTags')) {
-        fleetTags = data.fleetTags;
-      }
       if(data.hasOwnProperty('ships')) {
         ships = data.ships;
         updateHomeportView();
       }
-      if(data.hasOwnProperty('operations')) {
-        operations = data.operations;
+      let fileEventId = 'unknown';
+      if(data.hasOwnProperty('eventId')) {
+        fileEventId = data.eventId;
       }
-      if(data.hasOwnProperty('fleets')) {
-        fleets = data.fleets;
-        updateOperationView();
+      if(fileEventId == eventId) {
+        if(data.hasOwnProperty('fleets')) {
+          fleets = data.fleets;
+          updateOperationView();
+        }        
       }
 
       document.getElementById('kcsb_debug_console').innerText = reader.result;
@@ -230,7 +230,7 @@
   },false);
       
   let saveAsJsonFile = function() {
-    const jsonStr = JSON.stringify({fleetTags: fleetTags, ships: ships, operations: operations, fleets: fleets});
+    const jsonStr = JSON.stringify({eventId: eventId, ships: ships, fleets: fleets});
     let blob = new Blob([jsonStr], {type:"text/plan"});
     let link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
