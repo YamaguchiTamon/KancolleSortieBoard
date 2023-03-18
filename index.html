@@ -165,6 +165,7 @@
       const shipData = defaultFleetData[i];
       const typeData = shipDB[shipData.id];
       const ship = {
+        id: shipData.id,
         type: typeData.stype,
         name: typeData.name,
         lv: shipData.lv,
@@ -240,6 +241,10 @@
   }
   let onSaveButtonClicked = function(){
     saveAsJsonFile();
+  }
+
+  let exportSortieData = function() {
+
   }
 
   let canRetainFleetTag = function(shipId, fleetTag) {
