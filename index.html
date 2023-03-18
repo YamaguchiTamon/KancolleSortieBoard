@@ -62,32 +62,32 @@
   .kcsb_item:hover {
     cursor: pointer;
   }
-  .kcsb_fleet_container_area {
+  .kcsb_taskforce_container_area {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .kcsb_fleet_area {
+  .kcsb_taskforce_area {
     padding: 0px;
     margin-right: 1px;
     margin-bottom: 1px;
     height: 224px;
     background: #1f337b;
   }
-  .kcsb_fleet_area p {
+  .kcsb_taskforce_area p {
     padding: 1px;
     color: #ffffff;
     border: solid #000000;
     border-width: 0px 0px 0px 8px;
   }
-  .kcsb_fleet_ship_area {
+  .kcsb_taskforce_ship_area {
     padding: 0px;
     width: 180px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .kcsb_fleet_ship {
+  .kcsb_taskforce_ship {
     padding: 2px;
     width: 80px;
     height: 28px;
@@ -100,7 +100,7 @@
     display: table-cell;
     vertical-align: middle;
   }
-  .kcsb_fleet_ship:hover {
+  .kcsb_taskforce_ship:hover {
     cursor: pointer;
   }
   .kcsb_operation_label {
@@ -156,7 +156,7 @@
 <script src="defaultFleetData.js"></script>
 <script src="eventData.js"></script>
 <script>
-  let allowMultipleFleetTags = true;
+  let allowMultipleSortieTags = true;
 
   let sameShipListTable = [];
 
@@ -173,7 +173,7 @@
           type: dbShipData.stype,
           name: dbShipData.name,
           lv: shipData.lv,
-          fleetTags:{}
+          sortieTags:{}
         };
       } else {
         ship = {
@@ -181,7 +181,7 @@
           type: 0,
           name: '[未確認艦:' + shipData.id + ']',
           lv: shipData.lv,
-          fleetTags:{}
+          sortieTags:{}
         };
       }
       ships.push(ship);
@@ -192,7 +192,7 @@
       }
       sameShipList.push(i);
     }
-    ships.push({ type:0, name:'[未所持艦]', lv: 0, fleetTags:{} });
+    ships.push({ type:0, name:'[未所持艦]', lv: 0, sortieTags:{} });
     sameShipListTable[0] = [srcDataLen];
     sameShipListTable.forEach((sameShipList) => {
       sameShipList.sort((a, b) => {
@@ -238,26 +238,26 @@
     return sameShipList[lvIndex];
   }
 
-  let postImport = function(changedShips, changedFleets) {
+  let postImport = function(changedShips, changedTaskForces) {
     if(changedShips) {
       updateHomeportView();
     }
 
-    fleets.forEach((fleet) => {
-      fleet.ships = [];
+    taskforces.forEach((taskforce) => {
+      taskforce.ships = [];
     });
 
-    // clear fleet tags
+    // clear sortie tags
     ships.forEach((ship) => {
-      ship.fleetTags = {};
+      ship.sortieTags = {};
     });
-    fleets.forEach((fleet, fleetId) => {
-      fleet.requiredShips.forEach((requiredShip) => {
+    taskforces.forEach((taskforce, taskforceId) => {
+      taskforce.requiredShips.forEach((requiredShip) => {
         const localShipId = searchRequiredShipLocalId(requiredShip.id, requiredShip.lvIndex);
-        appendFleetShip(fleetId, localShipId, null);
+        appendTaskForceShip(taskforceId, localShipId, null);
       });
     });
-    if(changedFleets) {
+    if(changedTaskForces) {
       updateOperationView();
     }
     ships.forEach((ship, localShipId) => {
@@ -271,18 +271,18 @@
     reader.onload = function(ev){
       const data = JSON.parse(reader.result);
       fileEventId = '';
-      fleetTags = [];
+      sortieTags = [];
       operations = [];
-      fleets = [];
+      taskforces = [];
       if(data.hasOwnProperty('eventId')) {
         fileEventId = data.eventId;
       }
-      if(data.hasOwnProperty('fleetTags')) {
-        fleetTags = data.fleetTags;
+      if(data.hasOwnProperty('sortieTags')) {
+        sortieTags = data.sortieTags;
         if(data.hasOwnProperty('operations')) {
           operations = data.operations;
-          if(data.hasOwnProperty('fleets')) {
-            fleets = data.fleets;
+          if(data.hasOwnProperty('taskforces')) {
+            taskforces = data.taskforces;
           }
         }
       }
@@ -307,16 +307,16 @@
 
   let exportSortieData = function() {
     let shipIdTbl = {};
-    fleets.forEach((fleetDataSrc) => {
-      fleetDataSrc.requiredShips = [];
-      fleetDataSrc.ships.forEach((localShipId) => {
+    taskforces.forEach((taskforceDataSrc) => {
+      taskforceDataSrc.requiredShips = [];
+      taskforceDataSrc.ships.forEach((localShipId) => {
         const shipDataSrc = ships[localShipId];
         let shipData = {
           id: shipDataSrc.id,
           lvIndex: 0,
           localId: localShipId
         };
-        fleetDataSrc.requiredShips.push(shipData);
+        taskforceDataSrc.requiredShips.push(shipData);
         if(undefined == shipIdTbl[shipDataSrc.id]) {
           shipIdTbl[shipDataSrc.id] = [];
         }
@@ -335,65 +335,65 @@
       }
     });
 
-    fleets.forEach((fleetDataSrc) => {
-      fleetDataSrc.requiredShips.forEach((ship) => {
+    taskforces.forEach((taskforceDataSrc) => {
+      taskforceDataSrc.requiredShips.forEach((ship) => {
         ship.lvIndex = shipIdTbl[ship.id].indexOf(ship.localId);
         delete ship.localId;
       });
     });
 
-    saveAsJsonFile('toubanhyou.json', {eventId: eventId, fleetTags: fleetTags, operations: operations, fleets: fleets});
+    saveAsJsonFile('toubanhyou.json', {eventId: eventId, sortieTags: sortieTags, operations: operations, taskforces: taskforces});
   }
 
   let onSaveButtonClicked = function(){
     exportSortieData();
   }
 
-  let canRetainFleetTag = function(shipId, fleetTag) {
-    if(allowMultipleFleetTags) {
+  let canRetainSortieTag = function(shipId, sortieTag) {
+    if(allowMultipleSortieTags) {
       return true;
     }
     const shipData = ships[shipId];
-    const currentFleetTags = Object.keys(shipData.fleetTags);
-    if((0 !== currentFleetTags.length) && (currentFleetTags[0] != fleetTag)) {
+    const currentSortieTags = Object.keys(shipData.sortieTags);
+    if((0 !== currentSortieTags.length) && (currentSortieTags[0] != sortieTag)) {
       return false;
     }
     return true;    
   }
-  let retainFleetTag = function(shipId, fleetTag, onBound) {
-    if(!canRetainFleetTag(shipId, fleetTag)) {
+  let retainSortieTag = function(shipId, sortieTag, onBound) {
+    if(!canRetainSortieTag(shipId, sortieTag)) {
       return false;
     }
     let shipData = ships[shipId];
-    if(shipData.fleetTags.hasOwnProperty(fleetTag)) {
-      shipData.fleetTags[fleetTag]++;
+    if(shipData.sortieTags.hasOwnProperty(sortieTag)) {
+      shipData.sortieTags[sortieTag]++;
     } else {
-      shipData.fleetTags[fleetTag] = 1;
+      shipData.sortieTags[sortieTag] = 1;
       if(null != onBound && undefined != onBound) {
-        onBound(shipId, fleetTag);
+        onBound(shipId, sortieTag);
       }
     }
   }
-  let releaseFleetTag = function(shipId, fleetTag, onUnbound) {
+  let releaseSortieTag = function(shipId, sortieTag, onUnbound) {
     let shipData = ships[shipId];
-    if(1 < shipData.fleetTags[fleetTag]) {
-      shipData.fleetTags[fleetTag]--;
+    if(1 < shipData.sortieTags[sortieTag]) {
+      shipData.sortieTags[sortieTag]--;
     } else {
-      delete shipData.fleetTags[fleetTag];
+      delete shipData.sortieTags[sortieTag];
       if(onUnbound) {
-        onUnbound(shipId, fleetTag);
+        onUnbound(shipId, sortieTag);
       }
     }
   }
-  let appendFleetShip = function(fleetId, shipId, onBound) {
-    let fleetData = fleets[fleetId];
-    fleetData.ships.push(shipId);
-    retainFleetTag(shipId, fleetData.fleetTag, onBound);
+  let appendTaskForceShip = function(taskforceId, shipId, onBound) {
+    let taskforceData = taskforces[taskforceId];
+    taskforceData.ships.push(shipId);
+    retainSortieTag(shipId, taskforceData.sortieTag, onBound);
   }
-  let removeFleetShip = function(fleetId, shipId, onUnbound) {
-    let fleetData = fleets[fleetId];
-    fleetData.ships = fleetData.ships.filter(val => val !== shipId);
-    releaseFleetTag(shipId, fleetData.fleetTag, onUnbound);
+  let removeTaskForceShip = function(taskforceId, shipId, onUnbound) {
+    let taskforceData = taskforces[taskforceId];
+    taskforceData.ships = taskforceData.ships.filter(val => val !== shipId);
+    releaseSortieTag(shipId, taskforceData.sortieTag, onUnbound);
   }
 
   let getHomeportShipDivId = function(shipId) {
@@ -415,7 +415,7 @@
       shipDiv.id = getHomeportShipDivId(shipId);
       shipDiv.style.backgroundColor = shipColors[shipData.type];
       shipDiv.textContent = shipData.name + ' lv' + shipData.lv;
-      updateShipFleetTags(shipDiv, Object.keys(shipData.fleetTags));    
+      updateShipSortieTags(shipDiv, Object.keys(shipData.sortieTags));    
       shipDiv.customInfo = {
         shipId: shipId
       };
@@ -435,7 +435,7 @@
     });
   }
 
-  let updateShipFleetTags = function(shipDiv, shipFleetTags) {
+  let updateShipSortieTags = function(shipDiv, shipSortieTags) {
     if(null === shipDiv) {
       return;
     }
@@ -443,64 +443,64 @@
     if(extagNode) {
       shipDiv.removeChild(extagNode);
     }
-    if(0 < shipFleetTags.length) {
-      shipDiv.style.borderColor = fleetTags[shipFleetTags[0]].color;
-      if(1 < shipFleetTags.length) {
-        let fleetTagContainer = document.createElement('div');
-        fleetTagContainer.style.position = 'absolute';
-        fleetTagContainer.style.right = '0px';
-        fleetTagContainer.style.top = '0px';
-        for(let i=1; i<shipFleetTags.length; i++) {
-          let fleetTagNode = document.createElement('div');
-          fleetTagNode.style.width = '8px';
-          fleetTagNode.style.height = '4px';
-          fleetTagNode.style.backgroundColor = fleetTags[shipFleetTags[i]].color;
-          fleetTagContainer.appendChild(fleetTagNode);
+    if(0 < shipSortieTags.length) {
+      shipDiv.style.borderColor = sortieTags[shipSortieTags[0]].color;
+      if(1 < shipSortieTags.length) {
+        let sortieTagContainer = document.createElement('div');
+        sortieTagContainer.style.position = 'absolute';
+        sortieTagContainer.style.right = '0px';
+        sortieTagContainer.style.top = '0px';
+        for(let i=1; i<shipSortieTags.length; i++) {
+          let sortieTagNode = document.createElement('div');
+          sortieTagNode.style.width = '8px';
+          sortieTagNode.style.height = '4px';
+          sortieTagNode.style.backgroundColor = sortieTags[shipSortieTags[i]].color;
+          sortieTagContainer.appendChild(sortieTagNode);
         }
-        shipDiv.appendChild(fleetTagContainer);
+        shipDiv.appendChild(sortieTagContainer);
       }
     } else {
       shipDiv.style.borderColor = '#000000';
     }
   }
 
-  let getFleetDivId = function(fleetId) {
-    return 'fleet_div_' + fleetId;
+  let getTaskForceDivId = function(taskforceId) {
+    return 'taskforce_div_' + taskforceId;
   }
 
-  let updateFleetStateView = function(fleetId) {
-    let fleetDiv = document.getElementById(getFleetDivId(fleetId));
-    const fleetData = fleets[fleetId];
-    let hasMultipleFleetTags = false;
-    const fleetShipsLength = fleetData.ships.length;
-    for(let i=0; i<fleetShipsLength; i++) {
-      const shipData = ships[fleetData.ships[i]];
-      if(1 < Object.keys(shipData.fleetTags).length) {
-        hasMultipleFleetTags = true;
+  let updateTaskForceStateView = function(taskforceId) {
+    let taskforceDiv = document.getElementById(getTaskForceDivId(taskforceId));
+    const taskforceData = taskforces[taskforceId];
+    let hasMultipleSortieTags = false;
+    const taskforceShipsLength = taskforceData.ships.length;
+    for(let i=0; i<taskforceShipsLength; i++) {
+      const shipData = ships[taskforceData.ships[i]];
+      if(1 < Object.keys(shipData.sortieTags).length) {
+        hasMultipleSortieTags = true;
         break;
       }
     }
-    if(hasMultipleFleetTags) {
-      fleetDiv.style.backgroundColor = '#8f0404';
+    if(hasMultipleSortieTags) {
+      taskforceDiv.style.backgroundColor = '#8f0404';
     } else {
-      fleetDiv.style.backgroundColor = '#1f337b';
+      taskforceDiv.style.backgroundColor = '#1f337b';
     }
   }
 
-  let updateShipView = function(shipId, triggerFleetId) {
+  let updateShipView = function(shipId, triggerTaskForceId) {
     let shipData = ships[shipId];
-    const fleetTags = Object.keys(shipData.fleetTags);
-    updateShipFleetTags(document.getElementById(getHomeportShipDivId(shipId)), fleetTags);
-    const fleetsLength = fleets.length;
-    for(let fleetId=0; fleetId<fleetsLength; fleetId++) {
-      if(triggerFleetId === fleetId) {
+    const sortieTags = Object.keys(shipData.sortieTags);
+    updateShipSortieTags(document.getElementById(getHomeportShipDivId(shipId)), sortieTags);
+    const taskforcesLength = taskforces.length;
+    for(let taskforceId=0; taskforceId<taskforcesLength; taskforceId++) {
+      if(triggerTaskForceId === taskforceId) {
         continue;
       }
-      const fleetData = fleets[fleetId];
-      if(fleetData.ships.includes(shipId)) {
-        let fleetShipDiv = document.getElementById(getFleetShipDivId(fleetId, shipId));
-        updateShipFleetTags(fleetShipDiv, fleetTags);
-        updateFleetStateView(fleetId);
+      const taskforceData = taskforces[taskforceId];
+      if(taskforceData.ships.includes(shipId)) {
+        let taskforceShipDiv = document.getElementById(getTaskForceShipDivId(taskforceId, shipId));
+        updateShipSortieTags(taskforceShipDiv, sortieTags);
+        updateTaskForceStateView(taskforceId);
       }
     }
   }
@@ -509,7 +509,7 @@
     let operationContainerOld = document.getElementById('kcsb_operation_container');
     let operationContainer = operationContainerOld.cloneNode(false);
     operationContainerOld.parentNode.replaceChild(operationContainer, operationContainerOld);
-    let fleetContainers = [];
+    let taskforceContainers = [];
     for(let i=0; i<operations.length; i++) {
       let operationData = operations[i];
       let operationDiv = document.createElement('div');
@@ -524,38 +524,38 @@
         $(this).next('div').slideToggle();
       });
       operationDiv.appendChild(operationLabel);
-      let fleetContainer = document.createElement('div');
-      fleetContainer.className = 'kcsb_fleet_container_area';
-      operationDiv.appendChild(fleetContainer);
-      fleetContainers.push(fleetContainer);
+      let taskforceContainer = document.createElement('div');
+      taskforceContainer.className = 'kcsb_taskforce_container_area';
+      operationDiv.appendChild(taskforceContainer);
+      taskforceContainers.push(taskforceContainer);
     }
-    for(let fleetId=0; fleetId<fleets.length; fleetId++) {
-      let fleetData = fleets[fleetId];
-      if(!fleetData.visible) {
+    for(let taskforceId=0; taskforceId<taskforces.length; taskforceId++) {
+      let taskforceData = taskforces[taskforceId];
+      if(!taskforceData.visible) {
         //continue;
       }
-      let fleetDiv = document.createElement('div');
-      fleetDiv.className = 'kcsb_fleet_area';
-      fleetDiv.id = getFleetDivId(fleetId);
-      fleetContainer = fleetContainers[fleetData.oprationId];
-      fleetContainer.appendChild(fleetDiv);
-      let fleetLabel = document.createElement('p');
-      fleetLabel.textContent = fleetData.name;
-      fleetLabel.style.borderColor = fleetTags[fleetData.fleetTag].color;
-      fleetDiv.appendChild(fleetLabel);
+      let taskforceDiv = document.createElement('div');
+      taskforceDiv.className = 'kcsb_taskforce_area';
+      taskforceDiv.id = getTaskForceDivId(taskforceId);
+      taskforceContainer = taskforceContainers[taskforceData.oprationId];
+      taskforceContainer.appendChild(taskforceDiv);
+      let taskforceLabel = document.createElement('p');
+      taskforceLabel.textContent = taskforceData.name;
+      taskforceLabel.style.borderColor = sortieTags[taskforceData.sortieTag].color;
+      taskforceDiv.appendChild(taskforceLabel);
       let shipContainer = document.createElement('div');
-      shipContainer.className = 'kcsb_fleet_ship_area';
-      fleetDiv.appendChild(shipContainer);
-      fleetDiv.customInfo = {
-        fleetId: fleetId
+      shipContainer.className = 'kcsb_taskforce_ship_area';
+      taskforceDiv.appendChild(shipContainer);
+      taskforceDiv.customInfo = {
+        taskforceId: taskforceId
       }
-      fleetData.ships.forEach(function(shipId) {
-        let shipDiv = createFleetShip(shipId, fleetId);
+      taskforceData.ships.forEach(function(shipId) {
+        let shipDiv = createTaskForceShip(shipId, taskforceId);
         shipContainer.appendChild(shipDiv);
       });
-      updateFleetStateView(fleetId);
+      updateTaskForceStateView(taskforceId);
     }
-    $('.kcsb_fleet_area').droppable({
+    $('.kcsb_taskforce_area').droppable({
       activate: function(e,ui) {
       },
       over: function(e,ui) {
@@ -567,18 +567,18 @@
       },
       drop: function(e,ui) {
         let shipDiv = ui.draggable[0];
-        let shipContainer = $(this).find('.kcsb_fleet_ship_area')[0];
+        let shipContainer = $(this).find('.kcsb_taskforce_ship_area')[0];
         if(shipDiv.parentNode === shipContainer) {
           shipDiv.customInfo.canceled = true;
         }
         const shipId = shipDiv.customInfo.shipId;
         if(canDrop(this, shipId)) {
-          const fleetId = this.customInfo.fleetId;
-          let fleetData = fleets[fleetId];
-          appendFleetShip(fleetId, shipId, function() { updateShipView(shipId, fleetId); });
-          let shipDiv2 = createFleetShip(shipId, fleetId);
+          const taskforceId = this.customInfo.taskforceId;
+          let taskforceData = taskforces[taskforceId];
+          appendTaskForceShip(taskforceId, shipId, function() { updateShipView(shipId, taskforceId); });
+          let shipDiv2 = createTaskForceShip(shipId, taskforceId);
           shipContainer.appendChild(shipDiv2);
-          updateFleetStateView(fleetId);
+          updateTaskForceStateView(taskforceId);
         } else {
           shipDiv.customInfo.canceled = true;
         }
@@ -587,14 +587,14 @@
   }
 
   let canDrop = function(target, shipId) {
-    // check fleet tag
-    if(!canRetainFleetTag(shipId, fleets[target.customInfo.fleetId].fleetTag)) {
+    // check taskforce tag
+    if(!canRetainSortieTag(shipId, taskforces[target.customInfo.taskforceId].sortieTag)) {
       return false;
     }
 
     // check same ship existance
     let result = true;
-    $(target).find('.kcsb_fleet_ship').each(function(index, elem) {
+    $(target).find('.kcsb_taskforce_ship').each(function(index, elem) {
       if(elem.customInfo.shipId === shipId) {
         result = false;
         return;
@@ -603,21 +603,21 @@
     return result;
   }
 
-  let getFleetShipDivId = function(shipId, fleetId) {
-    return 'kcsb_fleet_ship_div_' + fleetId + '_' + shipId;
+  let getTaskForceShipDivId = function(shipId, taskforceId) {
+    return 'kcsb_taskforce_ship_div_' + taskforceId + '_' + shipId;
   }
 
-  let createFleetShip = function(shipId, fleetId) {
+  let createTaskForceShip = function(shipId, taskforceId) {
     let shipData = ships[shipId];
     let shipDiv = document.createElement('div');
-    shipDiv.className = 'kcsb_fleet_ship';
-    shipDiv.id = getFleetShipDivId(fleetId, shipId);
+    shipDiv.className = 'kcsb_taskforce_ship';
+    shipDiv.id = getTaskForceShipDivId(taskforceId, shipId);
     shipDiv.style.backgroundColor = shipColors[shipData.type];
     shipDiv.textContent = shipData.name + ' lv' + shipData.lv;
-    updateShipFleetTags(shipDiv, Object.keys(shipData.fleetTags));    
+    updateShipSortieTags(shipDiv, Object.keys(shipData.sortieTags));    
     shipDiv.customInfo = {
       shipId: shipId,
-      fleetId: fleetId
+      taskforceId: taskforceId
     };
     $(shipDiv).draggable({
       start: function(e,ui) {
@@ -634,8 +634,8 @@
         } else {
           this.parentNode.removeChild(this);
           const shipId = this.customInfo.shipId;
-          removeFleetShip(fleetId, shipId, function(){ updateShipView(shipId, fleetId); });
-          updateFleetStateView(fleetId);
+          removeTaskForceShip(taskforceId, shipId, function(){ updateShipView(shipId, taskforceId); });
+          updateTaskForceStateView(taskforceId);
         }
       }
     });
