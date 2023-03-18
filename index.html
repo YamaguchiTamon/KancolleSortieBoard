@@ -158,22 +158,47 @@
 <script>
   let allowMultipleFleetTags = true;
 
+  let sameShipListTable = [];
+
   let ships = [];
   {
-    const dataLen = defaultFleetData.length;
-    for(let i = 0; i < dataLen; ++i) {
+    const srcDataLen = defaultFleetData.length;
+    for(let i = 0; i < srcDataLen; ++i) {
       const shipData = defaultFleetData[i];
-      const typeData = shipDB[shipData.id];
-      const ship = {
-        id: shipData.id,
-        type: typeData.stype,
-        name: typeData.name,
-        lv: shipData.lv,
-        fleetTags:{}
-      };
+      const dbShipData = shipDB[shipData.id];
+      let ship;
+      if(dbShipData !== null && dbShipData !== undefined) {
+        ship = {
+          id: shipData.id,
+          type: dbShipData.stype,
+          name: dbShipData.name,
+          lv: shipData.lv,
+          fleetTags:{}
+        };
+      } else {
+        ship = {
+          id: shipData.id,
+          type: 0,
+          name: '[未確認艦:' + shipData.id + ']',
+          lv: shipData.lv,
+          fleetTags:{}
+        };
+      }
       ships.push(ship);
+      let sameShipList = sameShipListTable[dbShipData.id];
+      if(null === sameShipList || undefined === sameShipList) {
+        sameShipListTable[dbShipData.id] = [];
+        sameShipList = sameShipListTable[dbShipData.id];
+      }
+      sameShipList.push(i);
     }
-    ships.push({ type:0, name:'[未所持艦]', fleetTags:{} });
+    ships.push({ type:0, name:'[未所持艦]', lv: 0, fleetTags:{} });
+    sameShipListTable[0] = [srcDataLen];
+    sameShipListTable.forEach((sameShipList) => {
+      sameShipList.sort((a, b) => {
+        return ships[b].lv - ships[a].lv;  
+      })
+    });
   }
 
   const shipColors = [
@@ -200,51 +225,128 @@
     '#222222', // 20: 潜水母艦
     '#223333', // 21: 練習巡洋艦
     '#333333', // 22: 補給艦
-];
+  ];
 
-  let loadFromJsonFile = function(file) {
+  let searchRequiredShipLocalId = function(dbShipId, lvIndex) {
+    const sameShipList = sameShipListTable[dbShipId];
+    if(null === sameShipList || undefined === sameShipList) {
+      return ships.length - 1;
+    }
+    if(sameShipList.length <= lvIndex) {
+      lvIndex = sameShipList.length - 1;
+    }
+    return sameShipList[lvIndex];
+  }
+
+  let postImport = function(changedShips, changedFleets) {
+    if(changedShips) {
+      updateHomeportView();
+    }
+
+    fleets.forEach((fleet) => {
+      fleet.ships = [];
+    });
+
+    // clear fleet tags
+    ships.forEach((ship) => {
+      ship.fleetTags = {};
+    });
+    fleets.forEach((fleet, fleetId) => {
+      fleet.requiredShips.forEach((requiredShip) => {
+        const localShipId = searchRequiredShipLocalId(requiredShip.id, requiredShip.lvIndex);
+        appendFleetShip(fleetId, localShipId, null);
+      });
+    });
+    if(changedFleets) {
+      updateOperationView();
+    }
+    ships.forEach((ship, localShipId) => {
+      updateShipView(localShipId, -1);
+    });
+  }
+
+  let importSortieData = function(file) {
     let reader = new FileReader();
     reader.readAsText(file[0]);
     reader.onload = function(ev){
       const data = JSON.parse(reader.result);
-      if(data.hasOwnProperty('ships')) {
-        ships = data.ships;
-        updateHomeportView();
-      }
-      let fileEventId = 'unknown';
+      fileEventId = '';
+      fleetTags = [];
+      operations = [];
+      fleets = [];
       if(data.hasOwnProperty('eventId')) {
         fileEventId = data.eventId;
       }
-      if(fileEventId == eventId) {
-        if(data.hasOwnProperty('fleets')) {
-          fleets = data.fleets;
-          updateOperationView();
-        }        
+      if(data.hasOwnProperty('fleetTags')) {
+        fleetTags = data.fleetTags;
+        if(data.hasOwnProperty('operations')) {
+          operations = data.operations;
+          if(data.hasOwnProperty('fleets')) {
+            fleets = data.fleets;
+          }
+        }
       }
-
-      document.getElementById('kcsb_debug_console').innerText = reader.result;
+      postImport(false, true);
     }
   }
+
   document.getElementById('selfile').addEventListener('change',function(evt){
     let file = evt.target.files;
-    loadFromJsonFile(file);
+    importSortieData(file);
     evt.target.value = '';
   },false);
       
-  let saveAsJsonFile = function() {
-    const jsonStr = JSON.stringify({eventId: eventId, ships: ships, fleets: fleets});
+  let saveAsJsonFile = function(filename, obj) {
+    const jsonStr = JSON.stringify(obj);
     let blob = new Blob([jsonStr], {type:"text/plan"});
     let link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'toubanhyou.json';
+    link.download = filename;
     link.click();
-  }
-  let onSaveButtonClicked = function(){
-    saveAsJsonFile();
   }
 
   let exportSortieData = function() {
+    let shipIdTbl = {};
+    fleets.forEach((fleetDataSrc) => {
+      fleetDataSrc.requiredShips = [];
+      fleetDataSrc.ships.forEach((localShipId) => {
+        const shipDataSrc = ships[localShipId];
+        let shipData = {
+          id: shipDataSrc.id,
+          lvIndex: 0,
+          localId: localShipId
+        };
+        fleetDataSrc.requiredShips.push(shipData);
+        if(undefined == shipIdTbl[shipDataSrc.id]) {
+          shipIdTbl[shipDataSrc.id] = [];
+        }
+        if(!shipIdTbl[shipDataSrc.id].includes(localShipId)) {
+          shipIdTbl[shipDataSrc.id].push(localShipId);
+        }
+      });
+    });
 
+    Object.keys(shipIdTbl).forEach(function (key) {
+      let shipLocalIdList = shipIdTbl[key];
+      if(1 < shipLocalIdList.length) {
+        shipLocalIdList.sort((a, b) => {
+          return ships[b].lv - ships[a].lv;
+        });
+      }
+    });
+
+    fleets.forEach((fleetDataSrc) => {
+      fleetDataSrc.requiredShips.forEach((ship) => {
+        ship.lvIndex = shipIdTbl[ship.id].indexOf(ship.localId);
+        delete ship.localId;
+      });
+    });
+
+    saveAsJsonFile('toubanhyou.json', {eventId: eventId, fleetTags: fleetTags, operations: operations, fleets: fleets});
+  }
+
+  let onSaveButtonClicked = function(){
+    exportSortieData();
   }
 
   let canRetainFleetTag = function(shipId, fleetTag) {
@@ -267,7 +369,9 @@
       shipData.fleetTags[fleetTag]++;
     } else {
       shipData.fleetTags[fleetTag] = 1;
-      onBound(shipId, fleetTag);
+      if(null != onBound && undefined != onBound) {
+        onBound(shipId, fleetTag);
+      }
     }
   }
   let releaseFleetTag = function(shipId, fleetTag, onUnbound) {
@@ -310,7 +414,7 @@
       shipDiv.className = 'kcsb_item';
       shipDiv.id = getHomeportShipDivId(shipId);
       shipDiv.style.backgroundColor = shipColors[shipData.type];
-      shipDiv.textContent = shipData.name;
+      shipDiv.textContent = shipData.name + ' lv' + shipData.lv;
       updateShipFleetTags(shipDiv, Object.keys(shipData.fleetTags));    
       shipDiv.customInfo = {
         shipId: shipId
@@ -509,7 +613,7 @@
     shipDiv.className = 'kcsb_fleet_ship';
     shipDiv.id = getFleetShipDivId(fleetId, shipId);
     shipDiv.style.backgroundColor = shipColors[shipData.type];
-    shipDiv.textContent = shipData.name;
+    shipDiv.textContent = shipData.name + ' lv' + shipData.lv;
     updateShipFleetTags(shipDiv, Object.keys(shipData.fleetTags));    
     shipDiv.customInfo = {
       shipId: shipId,
