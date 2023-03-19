@@ -19,6 +19,10 @@
   .kcsb_apptitle {
     margin-right: 32px;
   }
+  .kcsb_file_selector_label {
+    margin-top: 6px;
+    font-size: 0.8em;
+  }
   .kcsb_view_selector_area {
     margin-left: 20px;
     font-size: 0.8em;
@@ -128,8 +132,9 @@
 <div id="kcsa">
   <div id="kcsb_toolbar" class="kcsb_toolbar">
     <div class="kcsb_apptitle">出撃当番表</div>
-    <input type="file" id="selfile" accept="application/json" />
-    <input type="button" id="savebtn" value="SAVE" onclick="onSaveButtonClicked();" />
+    <label class="kcsb_file_selector_label">制空権シミュレータ形式艦隊データ読み込み</label><input type="file" id="importFleetJson" accept="application/json" />
+    <label class="kcsb_file_selector_label">出撃データ読み込み</label><input type="file" id="importSortieJson" accept="application/json" />
+    <input type="button" id="savebtn" value="出撃データダウンロード" onclick="onSaveButtonClicked();" />
     <div class="kcsb_view_selector_area">
       <label for="view_selector">表示</label>
       <select id="view_selector" name="view_selector">
@@ -153,7 +158,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="jquery.ui.touch-punch.min.js"></script>
 <script src="shipDB.js"></script>
-<script src="defaultFleetData.js"></script>
+<!-- <script src="defaultFleetData.js"></script> -->
 <script src="eventData.js"></script>
 <script>
   let allowMultipleSortieTags = true;
@@ -161,10 +166,12 @@
   let sameShipListTable = [];
 
   let ships = [];
+  let nonPossesionShipLocalId = -1;
+
+  let importFleetData = function(fleetData)
   {
-    const srcDataLen = defaultFleetData.length;
-    for(let i = 0; i < srcDataLen; ++i) {
-      const shipData = defaultFleetData[i];
+    ships = [];
+    fleetData.forEach((shipData, i) => {
       const dbShipData = shipDB[shipData.id];
       let ship;
       if(dbShipData !== null && dbShipData !== undefined) {
@@ -191,14 +198,21 @@
         sameShipList = sameShipListTable[dbShipData.id];
       }
       sameShipList.push(i);
-    }
-    ships.push({ type:0, name:'[未所持艦]', lv: 0, sortieTags:{} });
-    sameShipListTable[0] = [srcDataLen];
+    });
+    ships.push({ id:0, type:0, name:'[未所持艦]', lv: 0, sortieTags:{} });
+    nonPossesionShipLocalId = ships.length - 1;
+    sameShipListTable[0] = [nonPossesionShipLocalId];
     sameShipListTable.forEach((sameShipList) => {
       sameShipList.sort((a, b) => {
         return ships[b].lv - ships[a].lv;  
-      })
+      });
     });
+  }
+
+  if('defaultFleetData' in window) {
+    importFleetData(defaultFleetData);
+  } else {
+    importFleetData([]);
   }
 
   const shipColors = [
@@ -230,7 +244,7 @@
   let searchRequiredShipLocalId = function(dbShipId, lvIndex) {
     const sameShipList = sameShipListTable[dbShipId];
     if(null === sameShipList || undefined === sameShipList) {
-      return ships.length - 1;
+      return nonPossesionShipLocalId;
     }
     if(sameShipList.length <= lvIndex) {
       lvIndex = sameShipList.length - 1;
@@ -265,7 +279,23 @@
     });
   }
 
-  let importSortieData = function(file) {
+  let importFleetJson = function(file) {
+    let reader = new FileReader();
+    reader.readAsText(file[0]);
+    reader.onload = function(ev){
+      const data = JSON.parse(reader.result);
+      importFleetData(data);
+      postImport(true, true);
+    }
+  }
+
+  document.getElementById('importFleetJson').addEventListener('change',function(evt){
+    let file = evt.target.files;
+    importFleetJson(file);
+    evt.target.value = '';
+  },false);
+      
+  let importSortieJson = function(file) {
     let reader = new FileReader();
     reader.readAsText(file[0]);
     reader.onload = function(ev){
@@ -290,9 +320,9 @@
     }
   }
 
-  document.getElementById('selfile').addEventListener('change',function(evt){
+  document.getElementById('importSortieJson').addEventListener('change',function(evt){
     let file = evt.target.files;
-    importSortieData(file);
+    importSortieJson(file);
     evt.target.value = '';
   },false);
       
@@ -666,8 +696,7 @@
   });
 
   window.addEventListener('DOMContentLoaded', function(){
-    updateHomeportView();
-    updateOperationView();
+    postImport(true, true);
   });
 
 </script>
