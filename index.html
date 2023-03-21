@@ -484,7 +484,6 @@
   let removeTaskForceShip = function(taskforceId, shipId, onUnbound) {
     let taskforceData = taskforces[taskforceId];
     taskforceData.ships = taskforceData.ships.filter(val => val !== shipId);
-    const tags = ships[shipId].sortieTags;
     releaseSortieTag(shipId, taskforceData.sortieTag, onUnbound);
   }
 
