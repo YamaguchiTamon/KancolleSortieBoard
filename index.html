@@ -8,7 +8,7 @@
 <body>
 <style>
   body {
-    margin: 20px;
+    margin: 10px;
     font-family: "arial unicode ms",sans-serif;
   }
   .kcsb_toolbar {
@@ -19,19 +19,35 @@
   .kcsb_apptitle {
     margin-right: 32px;
   }
-  .kcsb_file_selector_label {
-    margin-top: 6px;
+  .kcsb_file_selector_area {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
     font-size: 0.8em;
+    background-color: #285b6c;
+    color: #ffffff;
   }
   .kcsb_view_selector_area {
-    margin-left: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
     font-size: 0.8em;
+    background-color: #285b6c;
+    color: #ffffff;
   }
   .kcsb_document_container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
+  }
+  .kcsb_homeport_toolbar {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    background-color: #285b6c;
+    color: #ffffff;
+    font-size: 0.8em;
   }
   .kcsb_ship_container {
     flex-basis: 50%;
@@ -132,9 +148,15 @@
 <div id="kcsa">
   <div id="kcsb_toolbar" class="kcsb_toolbar">
     <div class="kcsb_apptitle">出撃当番表</div>
-    <label class="kcsb_file_selector_label">制空権シミュレータ形式艦隊データ読み込み</label><input type="file" id="importFleetJson" accept="application/json" />
-    <label class="kcsb_file_selector_label">出撃データ読み込み</label><input type="file" id="importSortieJson" accept="application/json" />
-    <input type="button" id="savebtn" value="出撃データダウンロード" onclick="onSaveButtonClicked();" />
+    <div id="kcsb_homeport_toolbar" class="kcsb_homeport_toolbar">
+      <label for="sort_selector">艦ソート</label>
+      <select id="sort_selector" name="sort_selector">
+        <option value="typeDesc">艦種 降順</option>
+        <option value="typeAsc">艦種 昇順</option>
+        <option value="lvDesc">Lv 降順</option>
+        <option value="lvAsc">Lv 昇順</option>
+      </select>
+    </div>
     <div class="kcsb_view_selector_area">
       <label for="view_selector">表示</label>
       <select id="view_selector" name="view_selector">
@@ -143,6 +165,9 @@
         <option value="10">艦</option>
       </select>
     </div>
+    <div class="kcsb_file_selector_area">艦隊データ読み込み <input type="file" id="importFleetJson" accept="application/json" /></div>
+    <div class="kcsb_file_selector_area">出撃データ読み込み <input type="file" id="importSortieJson" accept="application/json" /></div>
+    <input type="button" id="savebtn" value="出撃データダウンロード" onclick="onSaveButtonClicked();" />
   </div>
   <div id="kcsb_document_container" class="kcsb_document_container">
     <div id="kcsb_ship_container" class="kcsb_ship_container">
@@ -150,8 +175,8 @@
     <div id="kcsb_operation_container" class="kcsb_operation_container">
     </div>
   </div>
-  <div id="kcsb_debug_console" class="kcsb_debug_console">
-  </div>
+  <!-- <div id="kcsb_debug_console" class="kcsb_debug_console">
+  </div> -->
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -430,16 +455,53 @@
     return 'homeport_ship_div_' + shipId;
   }
 
+  const sortComapreFunctions = {
+    typeDesc: function(a, b) {
+      let shipA = ships[a.firstChild.customInfo.shipId];
+      let shipB = ships[b.firstChild.customInfo.shipId];
+      return shipB.type - shipA.type;
+    },
+    typeAsc: function(a, b) {
+      let shipA = ships[a.firstChild.customInfo.shipId];
+      let shipB = ships[b.firstChild.customInfo.shipId];
+      return shipA.type - shipB.type;
+    },
+    lvDesc: function(a, b) {
+      let shipA = ships[a.firstChild.customInfo.shipId];
+      let shipB = ships[b.firstChild.customInfo.shipId];
+      return shipB.lv - shipA.lv;
+    },
+    lvAsc: function(a, b) {
+      let shipA = ships[a.firstChild.customInfo.shipId];
+      let shipB = ships[b.firstChild.customInfo.shipId];
+      return shipA.lv - shipB.lv;
+    },
+  };
+
+  let sortHomeportView = function(sortType) {
+    let shipContainer = document.getElementById('kcsb_ship_container');
+    let targetNodes = shipContainer.childNodes;
+    let nodeList = [];
+    targetNodes.forEach((node) => {
+      nodeList.push(node);
+    });
+    nodeList.sort(sortComapreFunctions[sortType]);
+    let shipContainerNew = shipContainer.cloneNode(false);
+    nodeList.forEach((node) => {
+      shipContainerNew.appendChild(node);
+    });
+    shipContainer.parentElement.replaceChild(shipContainerNew, shipContainer);
+  }
+
   let updateHomeportView = function() {
     let shipContainerOld = document.getElementById('kcsb_ship_container');
     let shipContainer = shipContainerOld.cloneNode(false);
     shipContainerOld.parentNode.replaceChild(shipContainer, shipContainerOld);
-    const shipsLength = ships.length;
-    for(let shipId=0; shipId<shipsLength; shipId++) {
-      let shipData = ships[shipId];
+    let dockDivList = [];
+    ships.forEach((shipData, shipId) => {
       let dockDiv = document.createElement('div');
       dockDiv.className = 'kcsb_dock';
-      shipContainer.appendChild(dockDiv);
+      dockDivList.push(dockDiv);
       let shipDiv = document.createElement('div');
       shipDiv.className = 'kcsb_item';
       shipDiv.id = getHomeportShipDivId(shipId);
@@ -450,7 +512,13 @@
         shipId: shipId
       };
       dockDiv.appendChild(shipDiv);
-    }
+    });
+    const sortSelector = document.getElementById('sort_selector');
+    const sortType = sortSelector.value;
+    dockDivList.sort(sortComapreFunctions[sortType]);
+    dockDivList.forEach((dockDiv) => {
+      shipContainer.appendChild(dockDiv);
+    });
     $('.kcsb_item').draggable({
       start: function(e,ui) {
         let currentOffset = $(this).offset();
@@ -672,28 +740,38 @@
     return shipDiv;
   }
 
-  let viewSelector = document.getElementById('view_selector');
-  viewSelector.addEventListener('change', (event) => {
-    const value = event.target.value;
-    const visibleHomeport = value.charAt(0) == '1';
-    const visibleOperation = value.charAt(1) == '1';
+  {
+    let sortSelector = document.getElementById('sort_selector');
+    sortSelector.addEventListener('change', (event) => {
+      const value = event.target.value;
+      sortHomeportView(value);
+    });
+  }
 
-    let homeportNode = document.getElementById('kcsb_ship_container');
-    if(visibleHomeport) {
-      homeportNode.style.display = 'flex';
-      homeportNode.style.flexBasis = visibleOperation ? '50%' : '100%';
-    } else {
-      homeportNode.style.display = 'none';
-    }
+  {
+    let viewSelector = document.getElementById('view_selector');
+    viewSelector.addEventListener('change', (event) => {
+      const value = event.target.value;
+      const visibleHomeport = value.charAt(0) == '1';
+      const visibleOperation = value.charAt(1) == '1';
 
-    let operationNode = document.getElementById('kcsb_operation_container');
-    if(visibleOperation) {
-      operationNode.style.display = 'inline';
-      operationNode.style.flexBasis = visibleHomeport ? '50%' : '100%';
-    } else {
-      operationNode.style.display = 'none';
-    }
-  });
+      let homeportNode = document.getElementById('kcsb_ship_container');
+      if(visibleHomeport) {
+        homeportNode.style.display = 'flex';
+        homeportNode.style.flexBasis = visibleOperation ? '50%' : '100%';
+      } else {
+        homeportNode.style.display = 'none';
+      }
+
+      let operationNode = document.getElementById('kcsb_operation_container');
+      if(visibleOperation) {
+        operationNode.style.display = 'inline';
+        operationNode.style.flexBasis = visibleHomeport ? '50%' : '100%';
+      } else {
+        operationNode.style.display = 'none';
+      }
+    });
+  }
 
   window.addEventListener('DOMContentLoaded', function(){
     postImport(true, true);
