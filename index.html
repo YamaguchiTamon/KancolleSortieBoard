@@ -424,30 +424,67 @@
       shipData.sortieTags[sortieTag]++;
     } else {
       shipData.sortieTags[sortieTag] = 1;
-      if(null != onBound && undefined != onBound) {
+      const taskforcesLen = taskforces.length;
+      for(tfId = 0; tfId < taskforcesLen; tfId++) {
+        const tf = taskforces[tfId];
+        if(tf.ships.includes(shipId)) {
+          if(tf.allowedTags.includes(sortieTag)) {
+            releaseSortieTag(shipId, tf.sortieTag, null);
+          }
+        }
+      }
+      if(onBound) {
         onBound(shipId, sortieTag);
       }
     }
   }
   let releaseSortieTag = function(shipId, sortieTag, onUnbound) {
     let shipData = ships[shipId];
+    if(!shipData.sortieTags.hasOwnProperty(sortieTag)) {
+      return;
+    }
     if(1 < shipData.sortieTags[sortieTag]) {
       shipData.sortieTags[sortieTag]--;
     } else {
       delete shipData.sortieTags[sortieTag];
+      if(0 === Object.keys(shipData.sortieTags).length) {
+      // need to search a new sortie tag becasue the tag may be one of "allowedTags"
+      const taskforcesLen = taskforces.length;
+        for(tfId = 0; tfId < taskforcesLen; tfId++) {
+          const tf = taskforces[tfId];
+          if(tf.ships.includes(shipId)) {
+            retainSortieTag(shipId, tf.sortieTag, null);
+            break;
+          }
+        }
+      }
       if(onUnbound) {
         onUnbound(shipId, sortieTag);
       }
     }
   }
+  let hasAllowedSortieTag = function(shipId, allowedTags) {
+    const shipData = ships[shipId];
+    const allowedTagsLen = allowedTags.length;
+    for(let i = 0; i < allowedTagsLen; i++) {
+      const tag = allowedTags[i];
+      if(shipData.sortieTags.hasOwnProperty(tag)) {
+        return true;
+      }
+    }
+    return false;
+  }
   let appendTaskForceShip = function(taskforceId, shipId, onBound) {
     let taskforceData = taskforces[taskforceId];
     taskforceData.ships.push(shipId);
-    retainSortieTag(shipId, taskforceData.sortieTag, onBound);
+    if(!hasAllowedSortieTag(shipId, taskforceData.allowedTags)) {
+      retainSortieTag(shipId, taskforceData.sortieTag, onBound);
+    }
   }
   let removeTaskForceShip = function(taskforceId, shipId, onUnbound) {
     let taskforceData = taskforces[taskforceId];
     taskforceData.ships = taskforceData.ships.filter(val => val !== shipId);
+    const tags = ships[shipId].sortieTags;
     releaseSortieTag(shipId, taskforceData.sortieTag, onUnbound);
   }
 
