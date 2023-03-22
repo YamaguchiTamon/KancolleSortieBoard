@@ -279,6 +279,28 @@
     return sameShipList[lvIndex];
   }
 
+  let shipNameTable = null;
+
+  let resolveShipName = function(name) {
+    if(!shipNameTable) {
+      shipNameTable = {};
+      shipDB.forEach((shipData) => {
+        if(shipData) {
+          //if(shipNameTable[shipData.name]) {
+          //  //error
+          //  //'宗谷' and enemies have 2 or more db items.
+          //}
+          shipNameTable[shipData.name] = shipData.id;
+        }
+      });
+    }
+    const shipId = shipNameTable[name];
+    if(!shipId) {
+      return 0; // unknown ship
+    }
+    return shipId;
+  }
+
   let postImport = function(changedShips, changedTaskForces) {
     if(changedShips) {
       updateHomeportView();
@@ -294,7 +316,12 @@
     });
     taskforces.forEach((taskforce, taskforceId) => {
       taskforce.requiredShips.forEach((requiredShip) => {
-        const localShipId = searchRequiredShipLocalId(requiredShip.id, requiredShip.lvIndex);
+        let id = requiredShip.id;
+        if(undefined === id) {
+          id = resolveShipName(requiredShip.name);
+          requiredShip.id = id;
+        }
+        const localShipId = searchRequiredShipLocalId(id, requiredShip.lvIndex);
         appendTaskForceShip(taskforceId, localShipId, null);
       });
     });
