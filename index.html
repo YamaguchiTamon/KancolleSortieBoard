@@ -155,6 +155,8 @@
         <option value="typeAsc">艦種 昇順</option>
         <option value="lvDesc">Lv 降順</option>
         <option value="lvAsc">Lv 昇順</option>
+        <option value="tagDesc">札 降順</option>
+        <option value="tagAsc">札 昇順</option>
       </select>
     </div>
     <div class="kcsb_view_selector_area">
@@ -511,6 +513,22 @@
       let shipA = ships[a.firstChild.customInfo.shipId];
       let shipB = ships[b.firstChild.customInfo.shipId];
       return shipA.lv - shipB.lv;
+    },
+    tagDesc: function(a, b) {
+      const tagsB = ships[b.firstChild.customInfo.shipId].sortieTags;
+      const keysA = Object.keys(ships[a.firstChild.customInfo.shipId].sortieTags);
+      const keysB = Object.keys(ships[b.firstChild.customInfo.shipId].sortieTags);
+      const tagA = keysA.length === 0 ? -1 : keysA[0];
+      const tagB = keysB.length === 0 ? -1 : keysB[0];
+      return tagB - tagA;
+    },
+    tagAsc: function(a, b) {
+      const tagsB = ships[b.firstChild.customInfo.shipId].sortieTags;
+      const keysA = Object.keys(ships[a.firstChild.customInfo.shipId].sortieTags);
+      const keysB = Object.keys(ships[b.firstChild.customInfo.shipId].sortieTags);
+      const tagA = keysA.length === 0 ? -1 : keysA[0];
+      const tagB = keysB.length === 0 ? -1 : keysB[0];
+      return tagA - tagB;
     },
   };
 
