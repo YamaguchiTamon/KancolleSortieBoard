@@ -198,6 +198,7 @@
   let importFleetData = function(fleetData)
   {
     ships = [];
+    sameShipListTable = [];
     fleetData.forEach((shipData, i) => {
       const dbShipData = shipDB[shipData.id];
       let ship;
