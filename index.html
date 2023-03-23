@@ -186,6 +186,7 @@
 <script src="jquery.ui.touch-punch.min.js"></script>
 <script src="shipDB.js"></script>
 <!-- <script src="defaultFleetData.js"></script> -->
+<script>const defaultFleetData = [];</script>
 <script src="eventData.js"></script>
 <script>
   let allowMultipleSortieTags = true;
@@ -237,11 +238,7 @@
     });
   }
 
-  if('defaultFleetData' in window) {
-    importFleetData(defaultFleetData);
-  } else {
-    importFleetData([]);
-  }
+  importFleetData(defaultFleetData);
 
   const shipColors = [
     '#333333', //  0: ?
@@ -303,10 +300,6 @@
   }
 
   let postImport = function(changedShips, changedTaskForces) {
-    if(changedShips) {
-      updateHomeportView();
-    }
-
     taskforces.forEach((taskforce) => {
       taskforce.ships = [];
     });
@@ -324,8 +317,14 @@
         }
         const localShipId = searchRequiredShipLocalId(id, requiredShip.lvIndex);
         appendTaskForceShip(taskforceId, localShipId, null);
+        taskforce.invalidRequiredShips = false;
       });
     });
+    
+    if(changedShips) {
+      updateHomeportView();
+    }
+
     if(changedTaskForces) {
       updateOperationView();
     }
@@ -392,47 +391,62 @@
   }
 
   let updateRequiredShips = function() {
+    let changed = false;
     taskforces.forEach((taskforceDataSrc) => {
-      taskforceDataSrc.requiredShips = [];
-      taskforceDataSrc.ships.forEach((localShipId) => {
-        const shipDataSrc = ships[localShipId];
-        let shipData = {
-          id: shipDataSrc.id,
-          lvIndex: 0,
-          localId: localShipId
-        };
-        taskforceDataSrc.requiredShips.push(shipData);
-        if(undefined == shipIdTbl[shipDataSrc.id]) {
-          shipIdTbl[shipDataSrc.id] = [];
-        }
-        if(!shipIdTbl[shipDataSrc.id].includes(localShipId)) {
-          shipIdTbl[shipDataSrc.id].push(localShipId);
-        }
-      });
-    });
-  }
-
-  let exportSortieData = function() {
-    let shipIdTbl = {};
-
-    updateRequiredShips();
-
-    Object.keys(shipIdTbl).forEach(function (key) {
-      let shipLocalIdList = shipIdTbl[key];
-      if(1 < shipLocalIdList.length) {
-        shipLocalIdList.sort((a, b) => {
-          return ships[b].lv - ships[a].lv;
+      if(taskforceDataSrc.invalidRequiredShips) {
+        changed = true;
+        taskforceDataSrc.requiredShips = [];
+        taskforceDataSrc.ships.forEach((localShipId) => {
+          const shipDataSrc = ships[localShipId];
+          let requiredShipData = {
+            id: shipDataSrc.id,
+            lvIndex: 0,
+          };
+          taskforceDataSrc.requiredShips.push(requiredShipData);
         });
       }
     });
 
-    taskforces.forEach((taskforceDataSrc) => {
-      taskforceDataSrc.requiredShips.forEach((ship) => {
-        ship.lvIndex = shipIdTbl[ship.id].indexOf(ship.localId);
-        delete ship.localId;
+    let shipIdTbl = [];
+    if(changed) {
+      taskforces.forEach((taskforceDataSrc) => {
+        taskforceDataSrc.ships.forEach((localShipId) => {
+          if(nonPossesionShipLocalId !== localShipId) {
+            const shipData = ships(localShipId);
+            let sameShipList = shipIdTbl[shipData.id];
+            if(null === sameShipList || undefined === sameShipList) {
+              shipIdTbl[shipData.id] = [];
+              sameShipList = shipIdTbl[shipData.id];
+            }
+            sameShipList.push(localShipId);
+          }
+        });
+      }); 
+      shipIdTbl.forEach((sameShipList) => {
+        if(sameShipList) {
+          sameShipList.sort((a, b) => {
+            return ships[b].lv - ships[a].lv;  
+          });
+        }
       });
+      taskforces.forEach((taskforceDataSrc) => {
+        if(taskforceDataSrc.invalidRequiredShips) {
+          taskforceDataSrc.requiredShips.forEach((ship, index) => {
+            const localId = taskforceDataSrc.ships[index];
+            ship.lvIndex = shipIdTbl[ship.id].indexOf(localId);
+          });
+        }
+      });
+    }
+
+    taskforces.forEach((taskforceDataSrc) => {
+      taskforceDataSrc.invalidRequiredShips = false;
     });
 
+  }
+
+  let exportSortieData = function() {
+    updateRequiredShips();
     saveAsJsonFile('toubanhyou.json', {eventId: eventId, sortieTags: sortieTags, operations: operations, taskforces: taskforces});
   }
 
@@ -461,7 +475,7 @@
     } else {
       shipData.sortieTags[sortieTag] = 1;
       const taskforcesLen = taskforces.length;
-      for(tfId = 0; tfId < taskforcesLen; tfId++) {
+      for(let tfId = 0; tfId < taskforcesLen; tfId++) {
         const tf = taskforces[tfId];
         if(tf.ships.includes(shipId)) {
           if(tf.allowedTags.includes(sortieTag)) {
@@ -483,18 +497,17 @@
       shipData.sortieTags[sortieTag]--;
     } else {
       delete shipData.sortieTags[sortieTag];
-      if(0 === Object.keys(shipData.sortieTags).length) {
-      // need to search a new sortie tag becasue the tag may be one of "allowedTags"
+      // need to update sortie tags becasue the tag may be one of "allowedTags"
       const taskforcesLen = taskforces.length;
-        for(tfId = 0; tfId < taskforcesLen; tfId++) {
-          const tf = taskforces[tfId];
-          if(tf.ships.includes(shipId)) {
+      for(let tfId = 0; tfId < taskforcesLen; tfId++) {
+        const tf = taskforces[tfId];
+        if(tf.ships.includes(shipId)) {
+          if(tf.allowedTags.includes(sortieTag)) {
             retainSortieTag(shipId, tf.sortieTag, null);
-            break;
           }
         }
       }
-      if(onUnbound) {
+    if(onUnbound) {
         onUnbound(shipId, sortieTag);
       }
     }
@@ -513,6 +526,7 @@
   let appendTaskForceShip = function(taskforceId, shipId, onBound) {
     let taskforceData = taskforces[taskforceId];
     taskforceData.ships.push(shipId);
+    taskforceData.invalidRequiredShips = true;
     if(!hasAllowedSortieTag(shipId, taskforceData.allowedTags)) {
       retainSortieTag(shipId, taskforceData.sortieTag, onBound);
     }
@@ -520,6 +534,7 @@
   let removeTaskForceShip = function(taskforceId, shipId, onUnbound) {
     let taskforceData = taskforces[taskforceId];
     taskforceData.ships = taskforceData.ships.filter(val => val !== shipId);
+    taskforceData.invalidRequiredShips = true;
     releaseSortieTag(shipId, taskforceData.sortieTag, onUnbound);
   }
 
@@ -529,40 +544,66 @@
 
   const sortComapreFunctions = {
     typeDesc: function(a, b) {
-      let shipA = ships[a.firstChild.customInfo.shipId];
-      let shipB = ships[b.firstChild.customInfo.shipId];
-      return shipB.type - shipA.type;
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      let rv = shipB.type - shipA.type;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
     typeAsc: function(a, b) {
-      let shipA = ships[a.firstChild.customInfo.shipId];
-      let shipB = ships[b.firstChild.customInfo.shipId];
-      return shipA.type - shipB.type;
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      let rv = shipA.type - shipB.type;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
     lvDesc: function(a, b) {
-      let shipA = ships[a.firstChild.customInfo.shipId];
-      let shipB = ships[b.firstChild.customInfo.shipId];
-      return shipB.lv - shipA.lv;
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      let rv = shipB.lv - shipA.lv;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
     lvAsc: function(a, b) {
-      let shipA = ships[a.firstChild.customInfo.shipId];
-      let shipB = ships[b.firstChild.customInfo.shipId];
-      return shipA.lv - shipB.lv;
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      let rv = shipA.lv - shipB.lv;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
     tagDesc: function(a, b) {
-      const tagsB = ships[b.firstChild.customInfo.shipId].sortieTags;
-      const keysA = Object.keys(ships[a.firstChild.customInfo.shipId].sortieTags);
-      const keysB = Object.keys(ships[b.firstChild.customInfo.shipId].sortieTags);
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      const keysA = Object.keys(shipA.sortieTags);
+      const keysB = Object.keys(shipB.sortieTags);
       const tagA = keysA.length === 0 ? -1 : keysA[0];
       const tagB = keysB.length === 0 ? -1 : keysB[0];
-      return tagB - tagA;
+      let rv = tagB - tagA;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
     tagAsc: function(a, b) {
-      const tagsB = ships[b.firstChild.customInfo.shipId].sortieTags;
-      const keysA = Object.keys(ships[a.firstChild.customInfo.shipId].sortieTags);
-      const keysB = Object.keys(ships[b.firstChild.customInfo.shipId].sortieTags);
+      const shipA = ships[a.firstChild.customInfo.shipId];
+      const shipB = ships[b.firstChild.customInfo.shipId];
+      const keysA = Object.keys(shipA.sortieTags);
+      const keysB = Object.keys(shipB.sortieTags);
       const tagA = keysA.length === 0 ? -1 : keysA[0];
       const tagB = keysB.length === 0 ? -1 : keysB[0];
-      return tagA - tagB;
+      let rv = tagA - tagB;
+      if(0 === rv) {
+        rv = shipA.id - shipB.id;
+      }
+      return rv;
     },
   };
 
