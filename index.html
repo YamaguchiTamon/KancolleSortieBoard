@@ -340,6 +340,7 @@
     reader.onload = function(ev){
       const data = JSON.parse(reader.result);
       importFleetData(data);
+      updateRequiredShips();
       postImport(true, true);
     }
   }
@@ -390,8 +391,7 @@
     link.click();
   }
 
-  let exportSortieData = function() {
-    let shipIdTbl = {};
+  let updateRequiredShips = function() {
     taskforces.forEach((taskforceDataSrc) => {
       taskforceDataSrc.requiredShips = [];
       taskforceDataSrc.ships.forEach((localShipId) => {
@@ -410,6 +410,12 @@
         }
       });
     });
+  }
+
+  let exportSortieData = function() {
+    let shipIdTbl = {};
+
+    updateRequiredShips();
 
     Object.keys(shipIdTbl).forEach(function (key) {
       let shipLocalIdList = shipIdTbl[key];
