@@ -187,7 +187,8 @@
 <script src="shipDB.js"></script>
 <!-- <script src="defaultFleetData.js"></script> -->
 <script>const defaultFleetData = [];</script>
-<script src="eventData.js"></script>
+<!-- <script src="eventData.js"></script> -->
+<script src="zekamashiSortieData.js"></script>
 <script>
   let allowMultipleSortieTags = true;
 
@@ -412,7 +413,7 @@
       taskforces.forEach((taskforceDataSrc) => {
         taskforceDataSrc.ships.forEach((localShipId) => {
           if(nonPossesionShipLocalId !== localShipId) {
-            const shipData = ships(localShipId);
+            const shipData = ships[localShipId];
             let sameShipList = shipIdTbl[shipData.id];
             if(null === sameShipList || undefined === sameShipList) {
               shipIdTbl[shipData.id] = [];

@@ -62,6 +62,10 @@ let taskforces = [
     { name:'ゲージ1', taskforceType:'G', sortieTag:5, allowedTags:[1], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     { name:'ギミック2', taskforceType:'U', sortieTag:5, allowedTags:[4], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     { name:'ゲージ2', taskforceType:'U', sortieTag:5, allowedTags:[4], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 G2', taskforceType:'G', sortieTag:5, allowedTags:[1], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 E2,M', taskforceType:'G', sortieTag:5, allowedTags:[1], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 Q,U', taskforceType:'U', sortieTag:5, allowedTags:[4], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 W', taskforceType:'U', sortieTag:4, allowedTags:[], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     { name:'ゲージ3', taskforceType:'U', sortieTag:4, allowedTags:[], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E6
     { name:'ゲージ1', taskforceType:'G', sortieTag:5, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
@@ -70,5 +74,10 @@ let taskforces = [
     { name:'ゲージ3', taskforceType:'G', sortieTag:1, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     { name:'短縮 Z1', taskforceType:'G', sortieTag:7, allowedTags:[2,3], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     { name:'短縮 G', taskforceType:'G', sortieTag:5, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ4', taskforceType:'G', sortieTag:7, allowedTags:[2,3], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 G', taskforceType:'G', sortieTag:5, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 O', taskforceType:'U', sortieTag:6, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 L', taskforceType:'U', sortieTag:6, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 X', taskforceType:'G', sortieTag:1, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'破砕 Z1', taskforceType:'U', sortieTag:7, allowedTags:[2,3], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ4', taskforceType:'U', sortieTag:7, allowedTags:[2,3], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
 ];
