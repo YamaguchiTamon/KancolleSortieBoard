@@ -202,11 +202,11 @@
     ships = [];
     sameShipListTable = [];
     fleetData.forEach((shipData, i) => {
-      const dbShipData = shipDB[shipData.id];
+      const dbShipData = shipDB[shipData.ship_id];
       let ship;
       if(dbShipData !== null && dbShipData !== undefined) {
         ship = {
-          id: shipData.id,
+          id: shipData.ship_id,
           type: dbShipData.stype,
           name: dbShipData.name,
           lv: shipData.lv,
@@ -214,20 +214,22 @@
         };
       } else {
         ship = {
-          id: shipData.id,
+          id: shipData.ship_id,
           type: 0,
-          name: '[未確認艦:' + shipData.id + ']',
+          name: '[未確認艦:' + shipData.ship_id + ']',
           lv: shipData.lv,
           sortieTags:{}
         };
       }
       ships.push(ship);
-      let sameShipList = sameShipListTable[dbShipData.id];
-      if(null === sameShipList || undefined === sameShipList) {
-        sameShipListTable[dbShipData.id] = [];
-        sameShipList = sameShipListTable[dbShipData.id];
+      if(dbShipData !== null && dbShipData !== undefined) {
+        let sameShipList = sameShipListTable[dbShipData.id];
+        if(null === sameShipList || undefined === sameShipList) {
+          sameShipListTable[dbShipData.id] = [];
+          sameShipList = sameShipListTable[dbShipData.id];
+        }
+        sameShipList.push(i);
       }
-      sameShipList.push(i);
     });
     ships.push({ id:0, type:0, name:'[未所持艦]', lv: 0, sortieTags:{} });
     nonPossesionShipLocalId = ships.length - 1;

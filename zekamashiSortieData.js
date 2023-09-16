@@ -1,189 +1,75 @@
 let eventId = "202302";
 let sortieTags = [
     {
-        "name": "横須賀防備戦隊",
+        "name": "第二艦隊",
         "color": "#cccccc"
     },
     {
-        "name": "第二水雷戦隊",
-        "color": "#ccff44"
+        "name": "南沙哨戒部隊",
+        "color": "#44aa44"
     },
     {
-        "name": "支援連合艦隊",
-        "color": "#66cc44"
-    },
-    {
-        "name": "連合艦隊",
-        "color": "#229944"
-    },
-    {
-        "name": "空母機動部隊",
-        "color": "#88ccff"
-    },
-    {
-        "name": "伊号作戦部隊",
+        "name": "輸送護衛船団",
         "color": "#aaaa44"
     },
     {
-        "name": "逆上陸部隊",
-        "color": "#ccaa44"
+        "name": "第一水雷戦隊",
+        "color": "#bbbbdd"
     },
     {
-        "name": "決戦連合艦隊",
-        "color": "#cc88cc"
+        "name": "第五艦隊主力",
+        "color": "#66ffff"
+    },
+    {
+        "name": "第一艦隊",
+        "color": "#4444aa"
+    },
+    {
+        "name": "欧州遠征先遣隊",
+        "color": "#ccffcc"
+    },
+    {
+        "name": "イギリス連絡部隊",
+        "color": "#ffaa44"
+    },
+    {
+        "name": "英海軍主力部隊",
+        "color": "#aa8844"
+    },
+    {
+        "name": "英D-Day上陸部隊",
+        "color": "#88bb88"
+    },
+    {
+        "name": "米D-Day上陸部隊",
+        "color": "#ff44cc"
     }
 ];
 let operations = [
     {
-        "name": "第一海域:S21作戦"
+        "name": "第一海域:横須賀鎮守府/呉鎮守府"
     },
     {
-        "name": "第二海域:第二水雷戦隊 海上遊撃戦"
+        "name": "第二海域:南沙諸島沖/カムラン湾沖"
     },
     {
-        "name": "第三海域:敵空襲部隊を討て！"
+        "name": "第三海域:八戸港沖/三陸沖"
     },
     {
-        "name": "第四海域:伊号輸送作戦"
+        "name": "第四海域:津軽海峡/北海道釧路沖"
     },
     {
-        "name": "第五海域:出撃！八幡部隊"
+        "name": "第五海域:大西洋/イギリス海峡沖"
     },
     {
-        "name": "第六海域:決戦!硫黄島逆上陸作戦"
+        "name": "第六海域:ポートランド島沖/ライム湾"
+    },
+    {
+        "name": "第七海域:ノルマンディー沖"
     }
 ];
 let taskforces = [
     {
-        "name": "ギミック1 J",
-        "taskforceType": "N",
-        "sortieTag": 0,
-        "allowedTags": [],
-        "oprationId": 0,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 346,
-                "lvIndex": 0
-            },
-            {
-                "id": 658,
-                "lvIndex": 0
-            },
-            {
-                "id": 426,
-                "lvIndex": 0
-            },
-            {
-                "id": 347,
-                "lvIndex": 0
-            },
-            {
-                "id": 619,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            158,
-            264,
-            0,
-            157,
-            239
-        ],
-        "visible": false,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 G2",
-        "taskforceType": "N",
-        "sortieTag": 0,
-        "allowedTags": [],
-        "oprationId": 0,
-        "requiredShips": [
-            {
-                "id": 536,
-                "lvIndex": 0
-            },
-            {
-                "id": 346,
-                "lvIndex": 0
-            },
-            {
-                "id": 658,
-                "lvIndex": 0
-            },
-            {
-                "id": 426,
-                "lvIndex": 0
-            },
-            {
-                "id": 347,
-                "lvIndex": 0
-            },
-            {
-                "id": 619,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            219,
-            158,
-            264,
-            0,
-            157,
-            239
-        ],
-        "visible": false,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 C2",
-        "taskforceType": "N",
-        "sortieTag": 0,
-        "allowedTags": [],
-        "oprationId": 0,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 346,
-                "lvIndex": 0
-            },
-            {
-                "id": 536,
-                "lvIndex": 0
-            },
-            {
-                "id": 426,
-                "lvIndex": 0
-            },
-            {
-                "id": 347,
-                "lvIndex": 0
-            },
-            {
-                "id": 619,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            158,
-            219,
-            0,
-            157,
-            239
-        ],
-        "visible": false,
-        "invalidRequiredShips": false
-    },
-    {
         "name": "ゲージ1",
         "taskforceType": "N",
         "sortieTag": 0,
@@ -191,766 +77,7 @@ let taskforces = [
         "oprationId": 0,
         "requiredShips": [
             {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 426,
-                "lvIndex": 0
-            },
-            {
-                "id": 347,
-                "lvIndex": 0
-            },
-            {
-                "id": 346,
-                "lvIndex": 0
-            },
-            {
-                "id": 536,
-                "lvIndex": 0
-            },
-            {
-                "id": 269,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            0,
-            157,
-            158,
-            219,
-            64
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ2",
-        "taskforceType": "N",
-        "sortieTag": 0,
-        "allowedTags": [],
-        "oprationId": 0,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 536,
-                "lvIndex": 0
-            },
-            {
-                "id": 426,
-                "lvIndex": 0
-            },
-            {
-                "id": 346,
-                "lvIndex": 0
-            },
-            {
-                "id": 347,
-                "lvIndex": 0
-            },
-            {
-                "id": 376,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            219,
-            0,
-            158,
-            157,
-            191
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ1",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            122,
-            62,
-            161,
-            3,
-            25,
-            63,
-            354
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ2",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 364,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 647,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            63,
-            161,
-            3,
-            177,
-            122,
-            180,
-            25
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 E2",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 647,
-                "lvIndex": 0
-            },
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            3,
-            180,
-            179,
-            62,
-            161,
-            122,
-            25
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 T,U",
-        "taskforceType": "U",
-        "sortieTag": 2,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 546,
-                "lvIndex": 0
-            },
-            {
-                "id": 911,
-                "lvIndex": 0
-            },
-            {
-                "id": 555,
-                "lvIndex": 0
-            },
-            {
-                "id": 696,
-                "lvIndex": 0
-            },
-            {
-                "id": 189,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 1
-            },
-            {
-                "id": 656,
-                "lvIndex": 0
-            },
-            {
-                "id": 118,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 1
-            },
-            {
-                "id": 578,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 0
-            },
-            {
-                "id": 503,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            340,
-            118,
-            347,
-            250,
-            75,
-            374,
-            84,
-            87,
-            368,
-            149,
-            46,
-            103
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 G",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            62,
-            354,
-            161,
-            3,
-            25,
-            63
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 E2",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 647,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            3,
-            179,
-            180,
-            161,
-            25,
-            62,
-            122
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 D",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            179,
-            63,
-            354,
-            25,
-            3,
-            62,
-            122
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 J",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 364,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 647,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            63,
-            161,
-            3,
-            177,
-            122,
-            180,
-            25
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ3",
-        "taskforceType": "U",
-        "sortieTag": 2,
-        "allowedTags": [],
-        "oprationId": 1,
-        "requiredShips": [
-            {
-                "id": 546,
-                "lvIndex": 0
-            },
-            {
-                "id": 911,
-                "lvIndex": 0
-            },
-            {
-                "id": 555,
-                "lvIndex": 0
-            },
-            {
-                "id": 297,
-                "lvIndex": 0
-            },
-            {
-                "id": 189,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 1
-            },
-            {
-                "id": 656,
-                "lvIndex": 0
-            },
-            {
-                "id": 118,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 1
-            },
-            {
-                "id": 119,
-                "lvIndex": 0
-            },
-            {
-                "id": 578,
-                "lvIndex": 0
-            },
-            {
-                "id": 503,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            340,
-            118,
-            347,
-            100,
-            75,
-            374,
-            84,
-            87,
-            368,
-            46,
-            149,
-            103
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ1",
-        "taskforceType": "N",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 647,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            122,
-            161,
-            180,
-            25,
-            3,
-            354
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 J",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            3,
-            354,
-            208,
-            161,
-            25,
-            63
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 I",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            3,
-            354,
-            208,
-            161,
-            25,
-            63
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック2 P",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            3,
-            354,
-            208,
-            161,
-            25,
-            63
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック2 R",
-        "taskforceType": "U",
-        "sortieTag": 3,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 430,
-                "lvIndex": 0
-            },
-            {
-                "id": 429,
+                "id": 541,
                 "lvIndex": 0
             },
             {
@@ -958,1327 +85,11 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 393,
+                "id": 509,
                 "lvIndex": 0
             },
             {
-                "id": 106,
-                "lvIndex": 0
-            },
-            {
-                "id": 652,
-                "lvIndex": 0
-            },
-            {
-                "id": 314,
-                "lvIndex": 0
-            },
-            {
-                "id": 689,
-                "lvIndex": 0
-            },
-            {
-                "id": 476,
-                "lvIndex": 0
-            },
-            {
-                "id": 670,
-                "lvIndex": 0
-            },
-            {
-                "id": 569,
-                "lvIndex": 0
-            },
-            {
-                "id": 558,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            150,
-            148,
-            92,
-            200,
-            362,
-            56,
-            162,
-            229,
-            172,
-            202,
-            170,
-            128
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ2",
-        "taskforceType": "U",
-        "sortieTag": 3,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 430,
-                "lvIndex": 0
-            },
-            {
-                "id": 429,
-                "lvIndex": 0
-            },
-            {
-                "id": 197,
-                "lvIndex": 0
-            },
-            {
-                "id": 393,
-                "lvIndex": 0
-            },
-            {
-                "id": 106,
-                "lvIndex": 0
-            },
-            {
-                "id": 652,
-                "lvIndex": 0
-            },
-            {
-                "id": 314,
-                "lvIndex": 0
-            },
-            {
-                "id": 689,
-                "lvIndex": 0
-            },
-            {
-                "id": 476,
-                "lvIndex": 0
-            },
-            {
-                "id": 363,
-                "lvIndex": 0
-            },
-            {
-                "id": 569,
-                "lvIndex": 0
-            },
-            {
-                "id": 558,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            150,
-            148,
-            92,
-            200,
-            362,
-            56,
-            162,
-            229,
-            172,
-            192,
-            170,
-            128
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 V1",
-        "taskforceType": "U",
-        "sortieTag": 4,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 275,
-                "lvIndex": 0
-            },
-            {
-                "id": 276,
-                "lvIndex": 0
-            },
-            {
-                "id": 467,
-                "lvIndex": 0
-            },
-            {
-                "id": 466,
-                "lvIndex": 0
-            },
-            {
-                "id": 372,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 2
-            },
-            {
-                "id": 188,
-                "lvIndex": 0
-            },
-            {
-                "id": 218,
-                "lvIndex": 0
-            },
-            {
-                "id": 893,
-                "lvIndex": 0
-            },
-            {
-                "id": 118,
-                "lvIndex": 1
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            },
-            {
-                "id": 196,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            298,
-            300,
-            102,
-            96,
-            181,
-            223,
-            41,
-            30,
-            240,
-            355,
-            267,
-            101
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 K",
-        "taskforceType": "N",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            122,
-            161,
-            25,
-            208,
-            3,
-            354
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 I,P",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 557,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            3,
-            354,
-            208,
-            161,
-            25,
-            63
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 S2,(T)",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 447,
-                "lvIndex": 0
-            },
-            {
-                "id": 513,
-                "lvIndex": 0
-            },
-            {
-                "id": 364,
-                "lvIndex": 0
-            },
-            {
-                "id": 406,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            208,
-            179,
-            63,
-            154,
-            195,
-            177,
-            132
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 T",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 406,
-                "lvIndex": 0
-            },
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 364,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            122,
-            132,
-            179,
-            63,
-            177,
-            62,
-            354
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ3 削り",
-        "taskforceType": "U",
-        "sortieTag": 4,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 275,
-                "lvIndex": 0
-            },
-            {
-                "id": 276,
-                "lvIndex": 0
-            },
-            {
-                "id": 467,
-                "lvIndex": 0
-            },
-            {
-                "id": 466,
-                "lvIndex": 0
-            },
-            {
-                "id": 196,
-                "lvIndex": 0
-            },
-            {
-                "id": 488,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 2
-            },
-            {
-                "id": 188,
-                "lvIndex": 0
-            },
-            {
-                "id": 218,
-                "lvIndex": 0
-            },
-            {
-                "id": 893,
-                "lvIndex": 0
-            },
-            {
-                "id": 118,
-                "lvIndex": 1
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            298,
-            300,
-            102,
-            96,
-            101,
-            27,
-            223,
-            41,
-            30,
-            240,
-            355,
-            267
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ3",
-        "taskforceType": "U",
-        "sortieTag": 4,
-        "allowedTags": [],
-        "oprationId": 2,
-        "requiredShips": [
-            {
-                "id": 275,
-                "lvIndex": 0
-            },
-            {
-                "id": 276,
-                "lvIndex": 0
-            },
-            {
-                "id": 467,
-                "lvIndex": 0
-            },
-            {
-                "id": 466,
-                "lvIndex": 0
-            },
-            {
-                "id": 196,
-                "lvIndex": 0
-            },
-            {
-                "id": 488,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 2
-            },
-            {
-                "id": 188,
-                "lvIndex": 0
-            },
-            {
-                "id": 218,
-                "lvIndex": 0
-            },
-            {
-                "id": 893,
-                "lvIndex": 0
-            },
-            {
-                "id": 118,
-                "lvIndex": 1
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            298,
-            300,
-            102,
-            96,
-            101,
-            27,
-            223,
-            41,
-            30,
-            240,
-            355,
-            267
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 J",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            0
-        ],
-        "oprationId": 3,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 889,
-                "lvIndex": 0
-            },
-            {
-                "id": 536,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            289,
-            219,
-            291,
-            21,
-            112,
-            155
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1 K",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            0
-        ],
-        "oprationId": 3,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 498,
-                "lvIndex": 0
-            },
-            {
-                "id": 489,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            2,
-            74,
-            291,
-            21,
-            112,
-            155
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ1",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            0
-        ],
-        "oprationId": 3,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 498,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 489,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            2,
-            21,
-            291,
-            74,
-            112,
-            155
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック2",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            0
-        ],
-        "oprationId": 3,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 503,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 498,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            },
-            {
-                "id": 489,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            348,
-            21,
-            2,
-            155,
-            74,
-            112
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ2",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            0
-        ],
-        "oprationId": 3,
-        "requiredShips": [
-            {
-                "id": 160,
-                "lvIndex": 0
-            },
-            {
-                "id": 503,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 498,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            },
-            {
-                "id": 489,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            6,
-            348,
-            21,
-            2,
-            155,
-            74,
-            112
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            1
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 656,
-                "lvIndex": 1
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 489,
-                "lvIndex": 0
-            },
-            {
-                "id": 144,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            122,
-            354,
-            235,
-            366,
-            25,
-            74,
-            81
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ1",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            1
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 144,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 464,
-                "lvIndex": 0
-            },
-            {
-                "id": 656,
-                "lvIndex": 1
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            122,
-            81,
-            62,
-            25,
-            366,
-            235,
-            354
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック2",
-        "taskforceType": "U",
-        "sortieTag": 5,
-        "allowedTags": [
-            4
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 647,
-                "lvIndex": 1
-            },
-            {
-                "id": 198,
-                "lvIndex": 0
-            },
-            {
-                "id": 372,
-                "lvIndex": 0
-            },
-            {
-                "id": 435,
-                "lvIndex": 0
-            },
-            {
-                "id": 434,
-                "lvIndex": 0
-            },
-            {
-                "id": 908,
-                "lvIndex": 0
-            },
-            {
-                "id": 487,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 2
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 2
-            },
-            {
-                "id": 395,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            367,
-            70,
-            181,
-            13,
-            14,
-            197,
-            71,
-            341,
-            235,
-            267,
-            373,
-            386
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ2",
-        "taskforceType": "U",
-        "sortieTag": 5,
-        "allowedTags": [
-            4
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 647,
-                "lvIndex": 1
-            },
-            {
-                "id": 198,
-                "lvIndex": 0
-            },
-            {
-                "id": 372,
-                "lvIndex": 0
-            },
-            {
-                "id": 435,
-                "lvIndex": 0
-            },
-            {
-                "id": 434,
-                "lvIndex": 0
-            },
-            {
-                "id": 908,
-                "lvIndex": 0
-            },
-            {
-                "id": 487,
-                "lvIndex": 0
-            },
-            {
-                "id": 506,
-                "lvIndex": 2
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 2
-            },
-            {
-                "id": 395,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            367,
-            70,
-            181,
-            13,
-            14,
-            197,
-            71,
-            341,
-            235,
-            267,
-            373,
-            386
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 G2",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            1
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 365,
-                "lvIndex": 0
-            },
-            {
-                "id": 282,
-                "lvIndex": 0
-            },
-            {
-                "id": 406,
-                "lvIndex": 0
-            },
-            {
-                "id": 656,
-                "lvIndex": 7
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 353,
-                "lvIndex": 0
-            }
-        ],
-        "invalidRequiredShips": false,
-        "ships": [
-            179,
-            63,
-            132,
-            381,
-            208,
-            112,
-            164
-        ],
-        "visible": true
-    },
-    {
-        "name": "破砕 E2,M",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [
-            1
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 506,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 537,
-                "lvIndex": 0
-            },
-            {
-                "id": 656,
-                "lvIndex": 7
-            },
-            {
-                "id": 578,
-                "lvIndex": 2
-            },
-            {
-                "id": 119,
-                "lvIndex": 5
-            }
-        ],
-        "invalidRequiredShips": false,
-        "ships": [
-            62,
-            122,
-            112,
-            208,
-            381,
-            388,
-            364
-        ],
-        "visible": true
-    },
-    {
-        "name": "破砕 Q,U",
-        "taskforceType": "U",
-        "sortieTag": 5,
-        "allowedTags": [
-            4
-        ],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 498,
-                "lvIndex": 0
-            },
-            {
-                "id": 889,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 418,
-                "lvIndex": 0
-            },
-            {
-                "id": 563,
-                "lvIndex": 0
-            },
-            {
-                "id": 348,
-                "lvIndex": 0
-            },
-            {
-                "id": 547,
-                "lvIndex": 0
-            },
-            {
-                "id": 188,
-                "lvIndex": 0
-            },
-            {
-                "id": 469,
-                "lvIndex": 0
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            },
-            {
-                "id": 538,
-                "lvIndex": 0
-            },
-            {
-                "id": 192,
-                "lvIndex": 0
-            }
-        ],
-        "invalidRequiredShips": false,
-        "ships": [
-            2,
-            289,
-            291,
-            21,
-            112,
-            167,
-            16,
-            41,
-            155,
-            267,
-            296,
-            43
-        ],
-        "visible": true
-    },
-    {
-        "name": "破砕 W",
-        "taskforceType": "U",
-        "sortieTag": 4,
-        "allowedTags": [],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 704,
-                "lvIndex": 0
-            },
-            {
-                "id": 594,
-                "lvIndex": 0
-            },
-            {
-                "id": 467,
-                "lvIndex": 0
-            },
-            {
-                "id": 547,
-                "lvIndex": 0
-            },
-            {
-                "id": 538,
-                "lvIndex": 0
-            },
-            {
-                "id": 550,
-                "lvIndex": 1
-            },
-            {
-                "id": 200,
-                "lvIndex": 0
-            },
-            {
-                "id": 195,
-                "lvIndex": 0
-            },
-            {
-                "id": 178,
-                "lvIndex": 3
-            },
-            {
-                "id": 326,
-                "lvIndex": 0
-            },
-            {
-                "id": 564,
-                "lvIndex": 0
-            },
-            {
-                "id": 706,
-                "lvIndex": 0
-            }
-        ],
-        "invalidRequiredShips": false,
-        "ships": [
-            262,
-            26,
-            102,
-            16,
-            296,
-            361,
-            82,
-            4,
-            389,
-            8,
-            160,
-            267
-        ],
-        "visible": true
-    },
-    {
-        "name": "ゲージ3",
-        "taskforceType": "U",
-        "sortieTag": 4,
-        "allowedTags": [],
-        "oprationId": 4,
-        "requiredShips": [
-            {
-                "id": 546,
-                "lvIndex": 1
-            },
-            {
-                "id": 911,
-                "lvIndex": 1
-            },
-            {
-                "id": 466,
-                "lvIndex": 0
-            },
-            {
-                "id": 698,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 3
-            },
-            {
-                "id": 467,
-                "lvIndex": 0
-            },
-            {
-                "id": 326,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 2
-            },
-            {
-                "id": 706,
+                "id": 346,
                 "lvIndex": 0
             },
             {
@@ -2286,161 +97,38 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 629,
-                "lvIndex": 1
-            },
-            {
-                "id": 395,
-                "lvIndex": 1
+                "id": 668,
+                "lvIndex": 0
             }
         ],
+        "invalidRequiredShips": false,
         "ships": [
-            109,
-            370,
-            96,
-            83,
-            369,
-            102,
-            8,
-            373,
-            267,
+            94,
+            92,
+            351,
+            158,
             117,
-            375,
-            386
+            122
         ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ゲージ1",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [],
-        "oprationId": 5,
-        "requiredShips": [
-            {
-                "id": 506,
-                "lvIndex": 2
-            },
-            {
-                "id": 487,
-                "lvIndex": 0
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 178,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 908,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 3
-            }
-        ],
-        "ships": [
-            341,
-            71,
-            235,
-            135,
-            291,
-            197,
-            364
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
+        "visible": true
     },
     {
         "name": "ゲージ2",
-        "taskforceType": "U",
-        "sortieTag": 6,
+        "taskforceType": "N",
+        "sortieTag": 0,
         "allowedTags": [],
-        "oprationId": 5,
+        "oprationId": 0,
         "requiredShips": [
             {
-                "id": 559,
+                "id": 541,
                 "lvIndex": 0
             },
             {
-                "id": 260,
+                "id": 509,
                 "lvIndex": 0
             },
             {
-                "id": 666,
-                "lvIndex": 0
-            },
-            {
-                "id": 587,
-                "lvIndex": 0
-            },
-            {
-                "id": 623,
-                "lvIndex": 0
-            },
-            {
-                "id": 121,
-                "lvIndex": 0
-            },
-            {
-                "id": 199,
-                "lvIndex": 0
-            },
-            {
-                "id": 503,
-                "lvIndex": 2
-            },
-            {
-                "id": 198,
-                "lvIndex": 1
-            },
-            {
-                "id": 489,
-                "lvIndex": 1
-            },
-            {
-                "id": 489,
-                "lvIndex": 2
-            },
-            {
-                "id": 586,
-                "lvIndex": 1
-            }
-        ],
-        "ships": [
-            142,
-            50,
-            12,
-            159,
-            66,
-            120,
-            104,
-            377,
-            379,
-            376,
-            378,
-            271
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "ギミック1",
-        "taskforceType": "G",
-        "sortieTag": 1,
-        "allowedTags": [],
-        "oprationId": 5,
-        "requiredShips": [
-            {
-                "id": 506,
+                "id": 408,
                 "lvIndex": 0
             },
             {
@@ -2448,344 +136,120 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 629,
-                "lvIndex": 2
-            },
-            {
-                "id": 464,
+                "id": 195,
                 "lvIndex": 0
             },
             {
-                "id": 656,
-                "lvIndex": 2
-            },
-            {
-                "id": 908,
-                "lvIndex": 1
-            },
-            {
-                "id": 623,
-                "lvIndex": 1
+                "id": 543,
+                "lvIndex": 0
             }
         ],
+        "invalidRequiredShips": false,
         "ships": [
-            62,
+            94,
+            351,
+            22,
             122,
-            380,
-            25,
-            381,
-            382,
-            383
+            4,
+            117
         ],
-        "visible": true,
-        "invalidRequiredShips": false
+        "visible": true
     },
     {
-        "name": "ゲージ3",
-        "taskforceType": "G",
-        "sortieTag": 1,
+        "name": "ゲージ1",
+        "taskforceType": "N",
+        "sortieTag": 2,
         "allowedTags": [],
-        "oprationId": 5,
+        "oprationId": 1,
         "requiredShips": [
             {
-                "id": 623,
-                "lvIndex": 1
-            },
-            {
-                "id": 668,
+                "id": 557,
                 "lvIndex": 0
             },
             {
-                "id": 506,
+                "id": 348,
                 "lvIndex": 0
             },
             {
-                "id": 147,
+                "id": 478,
                 "lvIndex": 0
             },
             {
-                "id": 464,
+                "id": 703,
                 "lvIndex": 0
             },
             {
-                "id": 908,
-                "lvIndex": 1
-            },
-            {
-                "id": 419,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            383,
-            122,
-            62,
-            29,
-            25,
-            382,
-            3
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "短縮 Z1",
-        "taskforceType": "G",
-        "sortieTag": 7,
-        "allowedTags": [
-            2,
-            3
-        ],
-        "oprationId": 5,
-        "requiredShips": [
-            {
-                "id": 546,
-                "lvIndex": 0
-            },
-            {
-                "id": 911,
-                "lvIndex": 0
-            },
-            {
-                "id": 554,
-                "lvIndex": 0
-            },
-            {
-                "id": 553,
-                "lvIndex": 0
-            },
-            {
-                "id": 586,
-                "lvIndex": 0
-            },
-            {
-                "id": 145,
-                "lvIndex": 0
-            },
-            {
-                "id": 656,
-                "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 20
-            },
-            {
-                "id": 395,
-                "lvIndex": 0
-            },
-            {
-                "id": 146,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 0
-            },
-            {
-                "id": 550,
-                "lvIndex": 0
-            }
-        ],
-        "ships": [
-            340,
-            118,
-            65,
-            69,
-            228,
-            31,
-            84,
-            374,
-            213,
-            49,
-            46,
-            182
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "短縮 G",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [],
-        "oprationId": 5,
-        "requiredShips": [
-            {
-                "id": 506,
-                "lvIndex": 2
-            },
-            {
-                "id": 487,
-                "lvIndex": 0
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 178,
+                "id": 633,
                 "lvIndex": 0
             },
             {
                 "id": 716,
                 "lvIndex": 0
-            },
-            {
-                "id": 908,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 3
-            }
-        ],
-        "ships": [
-            341,
-            71,
-            235,
-            135,
-            291,
-            197,
-            364
-        ],
-        "visible": true,
-        "invalidRequiredShips": false
-    },
-    {
-        "name": "破砕 G",
-        "taskforceType": "G",
-        "sortieTag": 5,
-        "allowedTags": [],
-        "oprationId": 5,
-        "requiredShips": [
-            {
-                "id": 506,
-                "lvIndex": 2
-            },
-            {
-                "id": 487,
-                "lvIndex": 0
-            },
-            {
-                "id": 629,
-                "lvIndex": 0
-            },
-            {
-                "id": 178,
-                "lvIndex": 0
-            },
-            {
-                "id": 716,
-                "lvIndex": 0
-            },
-            {
-                "id": 908,
-                "lvIndex": 0
-            },
-            {
-                "id": 119,
-                "lvIndex": 3
             }
         ],
         "invalidRequiredShips": false,
         "ships": [
-            341,
-            71,
-            235,
-            135,
-            291,
-            197,
-            364
+            161,
+            167,
+            18,
+            259,
+            393,
+            291
         ],
         "visible": true
     },
     {
-        "name": "破砕 O",
-        "taskforceType": "U",
-        "sortieTag": 6,
+        "name": "ゲージ2",
+        "taskforceType": "N",
+        "sortieTag": 1,
         "allowedTags": [],
-        "oprationId": 5,
+        "oprationId": 1,
         "requiredShips": [
             {
-                "id": 260,
+                "id": 591,
                 "lvIndex": 0
             },
             {
-                "id": 586,
-                "lvIndex": 2
-            },
-            {
-                "id": 666,
+                "id": 954,
                 "lvIndex": 0
             },
             {
-                "id": 587,
+                "id": 156,
                 "lvIndex": 0
             },
             {
-                "id": 489,
-                "lvIndex": 6
-            },
-            {
-                "id": 559,
+                "id": 567,
                 "lvIndex": 0
             },
             {
-                "id": 623,
+                "id": 326,
                 "lvIndex": 0
             },
             {
-                "id": 503,
-                "lvIndex": 4
-            },
-            {
-                "id": 121,
+                "id": 662,
                 "lvIndex": 0
-            },
-            {
-                "id": 198,
-                "lvIndex": 2
-            },
-            {
-                "id": 199,
-                "lvIndex": 0
-            },
-            {
-                "id": 629,
-                "lvIndex": 9
             }
         ],
         "invalidRequiredShips": false,
         "ships": [
-            50,
-            271,
-            12,
-            159,
-            378,
-            142,
-            66,
-            377,
-            120,
-            379,
-            104,
-            387
+            73,
+            405,
+            115,
+            19,
+            8,
+            107
         ],
         "visible": true
     },
     {
-        "name": "破砕 L",
-        "taskforceType": "U",
-        "sortieTag": 6,
+        "name": "ゲージ1",
+        "taskforceType": "N",
+        "sortieTag": 3,
         "allowedTags": [],
-        "oprationId": 5,
+        "oprationId": 2,
         "requiredShips": [
             {
-                "id": 260,
-                "lvIndex": 0
-            },
-            {
-                "id": 666,
+                "id": 411,
                 "lvIndex": 0
             },
             {
@@ -2793,72 +257,934 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 587,
+                "id": 487,
                 "lvIndex": 0
             },
             {
-                "id": 489,
-                "lvIndex": 5
+                "id": 357,
+                "lvIndex": 0
             },
             {
                 "id": 559,
                 "lvIndex": 0
             },
             {
+                "id": 469,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            55,
+            193,
+            71,
+            168,
+            142,
+            155
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ2",
+        "taskforceType": "G",
+        "sortieTag": 4,
+        "allowedTags": [],
+        "oprationId": 2,
+        "requiredShips": [
+            {
+                "id": 200,
+                "lvIndex": 0
+            },
+            {
+                "id": 327,
+                "lvIndex": 0
+            },
+            {
+                "id": 700,
+                "lvIndex": 0
+            },
+            {
+                "id": 152,
+                "lvIndex": 0
+            },
+            {
+                "id": 464,
+                "lvIndex": 0
+            },
+            {
+                "id": 330,
+                "lvIndex": 0
+            },
+            {
+                "id": 560,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            82,
+            139,
+            251,
+            44,
+            25,
+            140,
+            95
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ3",
+        "taskforceType": "U",
+        "sortieTag": 0,
+        "allowedTags": [],
+        "oprationId": 2,
+        "requiredShips": [
+            {
+                "id": 408,
+                "lvIndex": 0
+            },
+            {
+                "id": 541,
+                "lvIndex": 0
+            },
+            {
+                "id": 509,
+                "lvIndex": 0
+            },
+            {
+                "id": 406,
+                "lvIndex": 0
+            },
+            {
+                "id": 652,
+                "lvIndex": 0
+            },
+            {
+                "id": 197,
+                "lvIndex": 0
+            },
+            {
+                "id": 497,
+                "lvIndex": 0
+            },
+            {
+                "id": 194,
+                "lvIndex": 0
+            },
+            {
+                "id": 668,
+                "lvIndex": 0
+            },
+            {
+                "id": 346,
+                "lvIndex": 0
+            },
+            {
+                "id": 195,
+                "lvIndex": 0
+            },
+            {
+                "id": 543,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            22,
+            94,
+            351,
+            132,
+            56,
+            92,
+            77,
+            51,
+            122,
+            158,
+            4,
+            117
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ1",
+        "taskforceType": "N",
+        "sortieTag": 3,
+        "allowedTags": [],
+        "oprationId": 3,
+        "requiredShips": [
+            {
+                "id": 487,
+                "lvIndex": 0
+            },
+            {
+                "id": 665,
+                "lvIndex": 0
+            },
+            {
+                "id": 240,
+                "lvIndex": 0
+            },
+            {
+                "id": 718,
+                "lvIndex": 0
+            },
+            {
+                "id": 559,
+                "lvIndex": 0
+            },
+            {
+                "id": 469,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            71,
+            36,
+            91,
+            295,
+            142,
+            155
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ2",
+        "taskforceType": "U",
+        "sortieTag": 5,
+        "allowedTags": [],
+        "oprationId": 3,
+        "requiredShips": [
+            {
+                "id": 594,
+                "lvIndex": 0
+            },
+            {
+                "id": 698,
+                "lvIndex": 0
+            },
+            {
+                "id": 466,
+                "lvIndex": 0
+            },
+            {
+                "id": 412,
+                "lvIndex": 0
+            },
+            {
+                "id": 553,
+                "lvIndex": 0
+            },
+            {
+                "id": 547,
+                "lvIndex": 0
+            },
+            {
                 "id": 623,
                 "lvIndex": 0
             },
             {
-                "id": 503,
-                "lvIndex": 4
+                "id": 395,
+                "lvIndex": 0
+            },
+            {
+                "id": 506,
+                "lvIndex": 0
+            },
+            {
+                "id": 118,
+                "lvIndex": 0
+            },
+            {
+                "id": 569,
+                "lvIndex": 0
+            },
+            {
+                "id": 578,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            26,
+            83,
+            96,
+            45,
+            69,
+            16,
+            66,
+            213,
+            62,
+            87,
+            170,
+            149
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ3",
+        "taskforceType": "U",
+        "sortieTag": 4,
+        "allowedTags": [],
+        "oprationId": 3,
+        "requiredShips": [
+            {
+                "id": 938,
+                "lvIndex": 0
+            },
+            {
+                "id": 152,
+                "lvIndex": 0
+            },
+            {
+                "id": 592,
+                "lvIndex": 0
             },
             {
                 "id": 121,
                 "lvIndex": 0
             },
             {
-                "id": 198,
-                "lvIndex": 2
-            },
-            {
-                "id": 199,
+                "id": 560,
                 "lvIndex": 0
             },
             {
-                "id": 629,
-                "lvIndex": 9
+                "id": 296,
+                "lvIndex": 0
+            },
+            {
+                "id": 200,
+                "lvIndex": 0
+            },
+            {
+                "id": 193,
+                "lvIndex": 0
+            },
+            {
+                "id": 330,
+                "lvIndex": 0
+            },
+            {
+                "id": 146,
+                "lvIndex": 0
+            },
+            {
+                "id": 419,
+                "lvIndex": 0
+            },
+            {
+                "id": 464,
+                "lvIndex": 0
             }
         ],
         "invalidRequiredShips": false,
         "ships": [
-            50,
-            12,
-            193,
-            159,
-            378,
-            142,
-            66,
-            377,
+            322,
+            44,
+            89,
             120,
-            379,
-            104,
-            387
+            95,
+            99,
+            82,
+            61,
+            140,
+            49,
+            3,
+            25
         ],
         "visible": true
     },
     {
-        "name": "破砕 X",
+        "name": "ゲージ1",
+        "taskforceType": "U",
+        "sortieTag": 7,
+        "allowedTags": [],
+        "oprationId": 4,
+        "requiredShips": [
+            {
+                "id": 188,
+                "lvIndex": 0
+            },
+            {
+                "id": 704,
+                "lvIndex": 0
+            },
+            {
+                "id": 467,
+                "lvIndex": 0
+            },
+            {
+                "id": 434,
+                "lvIndex": 0
+            },
+            {
+                "id": 647,
+                "lvIndex": 0
+            },
+            {
+                "id": 711,
+                "lvIndex": 0
+            },
+            {
+                "id": 691,
+                "lvIndex": 0
+            },
+            {
+                "id": 666,
+                "lvIndex": 0
+            },
+            {
+                "id": 915,
+                "lvIndex": 0
+            },
+            {
+                "id": 490,
+                "lvIndex": 0
+            },
+            {
+                "id": 446,
+                "lvIndex": 0
+            },
+            {
+                "id": 659,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            41,
+            262,
+            102,
+            14,
+            180,
+            278,
+            234,
+            12,
+            302,
+            80,
+            152,
+            265
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ2",
+        "taskforceType": "U",
+        "sortieTag": 7,
+        "allowedTags": [],
+        "oprationId": 4,
+        "requiredShips": [
+            {
+                "id": 723,
+                "lvIndex": 0
+            },
+            {
+                "id": 467,
+                "lvIndex": 0
+            },
+            {
+                "id": 704,
+                "lvIndex": 0
+            },
+            {
+                "id": 713,
+                "lvIndex": 0
+            },
+            {
+                "id": 434,
+                "lvIndex": 0
+            },
+            {
+                "id": 711,
+                "lvIndex": 0
+            },
+            {
+                "id": 691,
+                "lvIndex": 0
+            },
+            {
+                "id": 915,
+                "lvIndex": 0
+            },
+            {
+                "id": 666,
+                "lvIndex": 0
+            },
+            {
+                "id": 647,
+                "lvIndex": 0
+            },
+            {
+                "id": 490,
+                "lvIndex": 0
+            },
+            {
+                "id": 188,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            318,
+            102,
+            262,
+            282,
+            14,
+            278,
+            234,
+            302,
+            12,
+            180,
+            80,
+            41
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ3",
+        "taskforceType": "U",
+        "sortieTag": 7,
+        "allowedTags": [],
+        "oprationId": 4,
+        "requiredShips": [
+            {
+                "id": 723,
+                "lvIndex": 0
+            },
+            {
+                "id": 467,
+                "lvIndex": 0
+            },
+            {
+                "id": 704,
+                "lvIndex": 0
+            },
+            {
+                "id": 713,
+                "lvIndex": 0
+            },
+            {
+                "id": 188,
+                "lvIndex": 0
+            },
+            {
+                "id": 711,
+                "lvIndex": 0
+            },
+            {
+                "id": 691,
+                "lvIndex": 0
+            },
+            {
+                "id": 428,
+                "lvIndex": 0
+            },
+            {
+                "id": 347,
+                "lvIndex": 0
+            },
+            {
+                "id": 915,
+                "lvIndex": 0
+            },
+            {
+                "id": 490,
+                "lvIndex": 0
+            },
+            {
+                "id": 542,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            318,
+            102,
+            262,
+            282,
+            41,
+            278,
+            234,
+            53,
+            157,
+            302,
+            80,
+            106
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ1",
         "taskforceType": "G",
-        "sortieTag": 1,
+        "sortieTag": 6,
         "allowedTags": [],
         "oprationId": 5,
         "requiredShips": [
             {
-                "id": 623,
-                "lvIndex": 3
+                "id": 538,
+                "lvIndex": 0
+            },
+            {
+                "id": 580,
+                "lvIndex": 0
+            },
+            {
+                "id": 564,
+                "lvIndex": 0
+            },
+            {
+                "id": 1496,
+                "lvIndex": 0
+            },
+            {
+                "id": 430,
+                "lvIndex": 0
+            },
+            {
+                "id": 568,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            296,
+            220,
+            160,
+            236,
+            150,
+            76
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ2",
+        "taskforceType": "U",
+        "sortieTag": 8,
+        "allowedTags": [
+            5
+        ],
+        "oprationId": 5,
+        "requiredShips": [
+            {
+                "id": 576,
+                "lvIndex": 0
+            },
+            {
+                "id": 698,
+                "lvIndex": 0
+            },
+            {
+                "id": 364,
+                "lvIndex": 0
+            },
+            {
+                "id": 372,
+                "lvIndex": 0
+            },
+            {
+                "id": 360,
+                "lvIndex": 0
+            },
+            {
+                "id": 547,
+                "lvIndex": 0
+            },
+            {
+                "id": 506,
+                "lvIndex": 0
+            },
+            {
+                "id": 630,
+                "lvIndex": 0
+            },
+            {
+                "id": 537,
+                "lvIndex": 0
+            },
+            {
+                "id": 629,
+                "lvIndex": 0
+            },
+            {
+                "id": 147,
+                "lvIndex": 0
+            },
+            {
+                "id": 578,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            221,
+            83,
+            177,
+            181,
+            174,
+            16,
+            62,
+            222,
+            208,
+            235,
+            29,
+            149
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ3",
+        "taskforceType": "G",
+        "sortieTag": 9,
+        "allowedTags": [],
+        "oprationId": 5,
+        "requiredShips": [
+            {
+                "id": 546,
+                "lvIndex": 0
+            },
+            {
+                "id": 916,
+                "lvIndex": 0
+            },
+            {
+                "id": 550,
+                "lvIndex": 0
+            },
+            {
+                "id": 397,
+                "lvIndex": 0
+            },
+            {
+                "id": 166,
+                "lvIndex": 0
+            },
+            {
+                "id": 586,
+                "lvIndex": 0
+            },
+            {
+                "id": 705,
+                "lvIndex": 0
+            },
+            {
+                "id": 119,
+                "lvIndex": 0
+            },
+            {
+                "id": 626,
+                "lvIndex": 0
+            },
+            {
+                "id": 893,
+                "lvIndex": 0
+            },
+            {
+                "id": 394,
+                "lvIndex": 0
+            },
+            {
+                "id": 650,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            340,
+            339,
+            182,
+            215,
+            114,
+            228,
+            266,
+            46,
+            247,
+            240,
+            210,
+            277
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ1",
+        "taskforceType": "U",
+        "sortieTag": 10,
+        "allowedTags": [
+            0
+        ],
+        "oprationId": 6,
+        "requiredShips": [
+            {
+                "id": 275,
+                "lvIndex": 0
+            },
+            {
+                "id": 276,
+                "lvIndex": 0
+            },
+            {
+                "id": 554,
+                "lvIndex": 0
+            },
+            {
+                "id": 587,
+                "lvIndex": 0
+            },
+            {
+                "id": 198,
+                "lvIndex": 0
+            },
+            {
+                "id": 197,
+                "lvIndex": 0
+            },
+            {
+                "id": 889,
+                "lvIndex": 0
+            },
+            {
+                "id": 346,
+                "lvIndex": 0
+            },
+            {
+                "id": 726,
+                "lvIndex": 0
+            },
+            {
+                "id": 667,
+                "lvIndex": 0
+            },
+            {
+                "id": 497,
+                "lvIndex": 0
             },
             {
                 "id": 668,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            298,
+            300,
+            65,
+            159,
+            70,
+            92,
+            289,
+            158,
+            401,
+            184,
+            77,
+            122
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ2",
+        "taskforceType": "U",
+        "sortieTag": 10,
+        "allowedTags": [
+            0
+        ],
+        "oprationId": 6,
+        "requiredShips": [
+            {
+                "id": 275,
+                "lvIndex": 0
+            },
+            {
+                "id": 276,
+                "lvIndex": 0
+            },
+            {
+                "id": 554,
+                "lvIndex": 0
+            },
+            {
+                "id": 198,
+                "lvIndex": 0
+            },
+            {
+                "id": 346,
+                "lvIndex": 0
+            },
+            {
+                "id": 197,
+                "lvIndex": 0
+            },
+            {
+                "id": 497,
+                "lvIndex": 0
+            },
+            {
+                "id": 670,
+                "lvIndex": 0
+            },
+            {
+                "id": 889,
+                "lvIndex": 0
+            },
+            {
+                "id": 667,
+                "lvIndex": 0
+            },
+            {
+                "id": 587,
+                "lvIndex": 0
+            },
+            {
+                "id": 668,
+                "lvIndex": 0
+            }
+        ],
+        "invalidRequiredShips": false,
+        "ships": [
+            298,
+            300,
+            65,
+            70,
+            158,
+            92,
+            77,
+            202,
+            289,
+            184,
+            159,
+            122
+        ],
+        "visible": true
+    },
+    {
+        "name": "ゲージ3",
+        "taskforceType": "U",
+        "sortieTag": 8,
+        "allowedTags": [
+            5
+        ],
+        "oprationId": 6,
+        "requiredShips": [
+            {
+                "id": 576,
+                "lvIndex": 0
+            },
+            {
+                "id": 594,
+                "lvIndex": 0
+            },
+            {
+                "id": 364,
+                "lvIndex": 0
+            },
+            {
+                "id": 698,
+                "lvIndex": 0
+            },
+            {
+                "id": 372,
+                "lvIndex": 0
+            },
+            {
+                "id": 630,
                 "lvIndex": 0
             },
             {
@@ -2870,58 +1196,48 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 464,
+                "id": 623,
                 "lvIndex": 0
             },
             {
-                "id": 908,
-                "lvIndex": 5
+                "id": 537,
+                "lvIndex": 0
             },
             {
-                "id": 419,
+                "id": 951,
+                "lvIndex": 0
+            },
+            {
+                "id": 360,
                 "lvIndex": 0
             }
         ],
         "invalidRequiredShips": false,
         "ships": [
-            384,
-            122,
+            221,
+            26,
+            177,
+            83,
+            181,
+            222,
             62,
             29,
-            25,
-            382,
-            3
+            66,
+            208,
+            126,
+            174
         ],
         "visible": true
     },
     {
-        "name": "破砕 Z1",
+        "name": "ゲージ4",
         "taskforceType": "U",
-        "sortieTag": 7,
-        "allowedTags": [
-            2,
-            3
-        ],
-        "oprationId": 5,
+        "sortieTag": 9,
+        "allowedTags": [],
+        "oprationId": 6,
         "requiredShips": [
             {
-                "id": 546,
-                "lvIndex": 0
-            },
-            {
-                "id": 911,
-                "lvIndex": 0
-            },
-            {
-                "id": 550,
-                "lvIndex": 0
-            },
-            {
-                "id": 553,
-                "lvIndex": 0
-            },
-            {
-                "id": 554,
+                "id": 626,
                 "lvIndex": 0
             },
             {
@@ -2929,67 +1245,78 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 145,
+                "id": 489,
                 "lvIndex": 0
             },
             {
-                "id": 656,
+                "id": 199,
                 "lvIndex": 0
             },
             {
-                "id": 668,
-                "lvIndex": 19
-            },
-            {
-                "id": 395,
+                "id": 959,
                 "lvIndex": 0
             },
             {
-                "id": 146,
+                "id": 498,
                 "lvIndex": 0
             },
             {
-                "id": 119,
+                "id": 705,
+                "lvIndex": 0
+            },
+            {
+                "id": 394,
+                "lvIndex": 0
+            },
+            {
+                "id": 908,
+                "lvIndex": 0
+            },
+            {
+                "id": 893,
+                "lvIndex": 0
+            },
+            {
+                "id": 563,
+                "lvIndex": 0
+            },
+            {
+                "id": 468,
                 "lvIndex": 0
             }
         ],
         "invalidRequiredShips": false,
         "ships": [
-            340,
-            118,
-            182,
-            69,
-            65,
+            247,
             228,
-            31,
-            84,
-            342,
-            213,
-            49,
-            46
+            74,
+            104,
+            17,
+            2,
+            266,
+            210,
+            197,
+            240,
+            112,
+            78
         ],
         "visible": true
     },
     {
-        "name": "ゲージ4",
-        "taskforceType": "G",
-        "sortieTag": 7,
+        "name": "ゲージ5",
+        "taskforceType": "U",
+        "sortieTag": 8,
         "allowedTags": [
-            2,
-            3
+            5
         ],
-        "oprationId": 5,
+        "oprationId": 6,
         "requiredShips": [
             {
-                "id": 546,
+                "id": 576,
                 "lvIndex": 0
             },
             {
-                "id": 911,
-                "lvIndex": 0
-            },
-            {
-                "id": 659,
+                "id": 372,
                 "lvIndex": 0
             },
             {
@@ -2997,53 +1324,57 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
+                "id": 630,
+                "lvIndex": 0
+            },
+            {
+                "id": 364,
+                "lvIndex": 0
+            },
+            {
                 "id": 698,
-                "lvIndex": 1
-            },
-            {
-                "id": 586,
                 "lvIndex": 0
             },
             {
-                "id": 145,
+                "id": 506,
                 "lvIndex": 0
             },
             {
-                "id": 656,
+                "id": 147,
                 "lvIndex": 0
-            },
-            {
-                "id": 668,
-                "lvIndex": 1
             },
             {
                 "id": 395,
                 "lvIndex": 0
             },
             {
-                "id": 146,
+                "id": 629,
                 "lvIndex": 0
             },
             {
-                "id": 119,
+                "id": 623,
+                "lvIndex": 0
+            },
+            {
+                "id": 961,
                 "lvIndex": 0
             }
         ],
+        "invalidRequiredShips": false,
         "ships": [
-            340,
-            118,
-            265,
+            221,
+            181,
             174,
-            385,
-            228,
-            31,
-            84,
-            374,
+            222,
+            177,
+            83,
+            62,
+            29,
             213,
-            49,
-            46
+            235,
+            66,
+            31
         ],
-        "visible": true,
-        "invalidRequiredShips": false
+        "visible": true
     }
 ];
