@@ -179,7 +179,7 @@ let taskforces = [
                 "lvIndex": 0
             },
             {
-                "id": 633,
+                "id": 725,
                 "lvIndex": 0
             },
             {
@@ -233,7 +233,7 @@ let taskforces = [
         "invalidRequiredShips": false,
         "ships": [
             73,
-            405,
+            38,
             115,
             19,
             8,
