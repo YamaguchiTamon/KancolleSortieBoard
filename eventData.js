@@ -26,31 +26,31 @@ let operations = [
 
 let taskforces = [
     // E1
-    { name:'ゲージ1', taskforceType:'N', sortieTag:0, allowedTags:[], oprationId:0, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'N', sortieTag:0, allowedTags:[], oprationId:0, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'N', sortieTag:0, allowedTags:[], operationId:0, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'N', sortieTag:0, allowedTags:[], operationId:0, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E2
-    { name:'ゲージ1', taskforceType:'N', sortieTag:2, allowedTags:[], oprationId:1, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'N', sortieTag:1, allowedTags:[], oprationId:1, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'N', sortieTag:2, allowedTags:[], operationId:1, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'N', sortieTag:1, allowedTags:[], operationId:1, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E3
-    { name:'ゲージ1', taskforceType:'N', sortieTag:3, allowedTags:[], oprationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'G', sortieTag:4, allowedTags:[], oprationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ3', taskforceType:'U', sortieTag:0, allowedTags:[], oprationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'N', sortieTag:3, allowedTags:[], operationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'G', sortieTag:4, allowedTags:[], operationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ3', taskforceType:'U', sortieTag:0, allowedTags:[], operationId:2, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E4
-    { name:'ゲージ1', taskforceType:'N', sortieTag:3, allowedTags:[], oprationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'U', sortieTag:5, allowedTags:[], oprationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ3', taskforceType:'U', sortieTag:4, allowedTags:[], oprationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'N', sortieTag:3, allowedTags:[], operationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'U', sortieTag:5, allowedTags:[], operationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ3', taskforceType:'U', sortieTag:4, allowedTags:[], operationId:3, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E5
-    { name:'ゲージ1', taskforceType:'U', sortieTag:7, allowedTags:[], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'U', sortieTag:7, allowedTags:[], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ3', taskforceType:'U', sortieTag:7, allowedTags:[], oprationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'U', sortieTag:7, allowedTags:[], operationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'U', sortieTag:7, allowedTags:[], operationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ3', taskforceType:'U', sortieTag:7, allowedTags:[], operationId:4, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E6
-    { name:'ゲージ1', taskforceType:'G', sortieTag:6, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'U', sortieTag:8, allowedTags:[5], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ3', taskforceType:'G', sortieTag:9, allowedTags:[], oprationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'G', sortieTag:6, allowedTags:[], operationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'U', sortieTag:8, allowedTags:[5], operationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ3', taskforceType:'G', sortieTag:9, allowedTags:[], operationId:5, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
     // E7
-    { name:'ゲージ1', taskforceType:'U', sortieTag:10, allowedTags:[0], oprationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ2', taskforceType:'U', sortieTag:10, allowedTags:[0], oprationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ3', taskforceType:'U', sortieTag:8, allowedTags:[5], oprationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ4', taskforceType:'U', sortieTag:9, allowedTags:[], oprationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
-    { name:'ゲージ5', taskforceType:'U', sortieTag:8, allowedTags:[5], oprationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ1', taskforceType:'U', sortieTag:10, allowedTags:[0], operationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ2', taskforceType:'U', sortieTag:10, allowedTags:[0], operationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ3', taskforceType:'U', sortieTag:8, allowedTags:[5], operationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ4', taskforceType:'U', sortieTag:9, allowedTags:[], operationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
+    { name:'ゲージ5', taskforceType:'U', sortieTag:8, allowedTags:[5], operationId:6, requiredShips:[], invalidRequiredShips:false, ships:[], visible:true },
 ];

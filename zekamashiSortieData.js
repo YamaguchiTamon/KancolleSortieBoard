@@ -74,7 +74,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 0,
         "allowedTags": [],
-        "oprationId": 0,
+        "operationId": 0,
         "requiredShips": [
             {
                 "id": 541,
@@ -117,7 +117,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 0,
         "allowedTags": [],
-        "oprationId": 0,
+        "operationId": 0,
         "requiredShips": [
             {
                 "id": 541,
@@ -160,7 +160,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 2,
         "allowedTags": [],
-        "oprationId": 1,
+        "operationId": 1,
         "requiredShips": [
             {
                 "id": 557,
@@ -203,7 +203,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 1,
         "allowedTags": [],
-        "oprationId": 1,
+        "operationId": 1,
         "requiredShips": [
             {
                 "id": 591,
@@ -246,7 +246,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 3,
         "allowedTags": [],
-        "oprationId": 2,
+        "operationId": 2,
         "requiredShips": [
             {
                 "id": 411,
@@ -289,7 +289,7 @@ let taskforces = [
         "taskforceType": "G",
         "sortieTag": 4,
         "allowedTags": [],
-        "oprationId": 2,
+        "operationId": 2,
         "requiredShips": [
             {
                 "id": 200,
@@ -337,7 +337,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 0,
         "allowedTags": [],
-        "oprationId": 2,
+        "operationId": 2,
         "requiredShips": [
             {
                 "id": 408,
@@ -410,7 +410,7 @@ let taskforces = [
         "taskforceType": "N",
         "sortieTag": 3,
         "allowedTags": [],
-        "oprationId": 3,
+        "operationId": 3,
         "requiredShips": [
             {
                 "id": 487,
@@ -453,7 +453,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 5,
         "allowedTags": [],
-        "oprationId": 3,
+        "operationId": 3,
         "requiredShips": [
             {
                 "id": 594,
@@ -526,7 +526,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 4,
         "allowedTags": [],
-        "oprationId": 3,
+        "operationId": 3,
         "requiredShips": [
             {
                 "id": 938,
@@ -599,7 +599,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 7,
         "allowedTags": [],
-        "oprationId": 4,
+        "operationId": 4,
         "requiredShips": [
             {
                 "id": 188,
@@ -672,7 +672,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 7,
         "allowedTags": [],
-        "oprationId": 4,
+        "operationId": 4,
         "requiredShips": [
             {
                 "id": 723,
@@ -745,7 +745,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 7,
         "allowedTags": [],
-        "oprationId": 4,
+        "operationId": 4,
         "requiredShips": [
             {
                 "id": 723,
@@ -818,7 +818,7 @@ let taskforces = [
         "taskforceType": "G",
         "sortieTag": 6,
         "allowedTags": [],
-        "oprationId": 5,
+        "operationId": 5,
         "requiredShips": [
             {
                 "id": 538,
@@ -863,7 +863,7 @@ let taskforces = [
         "allowedTags": [
             5
         ],
-        "oprationId": 5,
+        "operationId": 5,
         "requiredShips": [
             {
                 "id": 576,
@@ -936,7 +936,7 @@ let taskforces = [
         "taskforceType": "G",
         "sortieTag": 9,
         "allowedTags": [],
-        "oprationId": 5,
+        "operationId": 5,
         "requiredShips": [
             {
                 "id": 546,
@@ -1011,14 +1011,14 @@ let taskforces = [
         "allowedTags": [
             0
         ],
-        "oprationId": 6,
+        "operationId": 6,
         "requiredShips": [
             {
-                "id": 275,
+                "id": 541,
                 "lvIndex": 0
             },
             {
-                "id": 276,
+                "id": 573,
                 "lvIndex": 0
             },
             {
@@ -1086,14 +1086,14 @@ let taskforces = [
         "allowedTags": [
             0
         ],
-        "oprationId": 6,
+        "operationId": 6,
         "requiredShips": [
             {
-                "id": 275,
+                "id": 541,
                 "lvIndex": 0
             },
             {
-                "id": 276,
+                "id": 573,
                 "lvIndex": 0
             },
             {
@@ -1161,7 +1161,7 @@ let taskforces = [
         "allowedTags": [
             5
         ],
-        "oprationId": 6,
+        "operationId": 6,
         "requiredShips": [
             {
                 "id": 576,
@@ -1234,7 +1234,7 @@ let taskforces = [
         "taskforceType": "U",
         "sortieTag": 9,
         "allowedTags": [],
-        "oprationId": 6,
+        "operationId": 6,
         "requiredShips": [
             {
                 "id": 626,
@@ -1309,7 +1309,7 @@ let taskforces = [
         "allowedTags": [
             5
         ],
-        "oprationId": 6,
+        "operationId": 6,
         "requiredShips": [
             {
                 "id": 576,
